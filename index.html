@@ -1,774 +1,750 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Солнечная микрогенерация под ключ — комплекты и услуги | АО «Россети Кубань»</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Солнечная микрогенерация — комплекты и подключение | АО «Россети Кубань»</title>
 
-  <!-- Шрифты -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<!-- Шрифты -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
-  <style>
-    /* ====== Брендовые токены (Россети) ====== */
-    :root{
-      --rs-blue:#0033A0;
-      --rs-blue-600:#0A47C6;
-      --rs-accent:#00AEEF;
-      --rs-ink:#0b1a2b;
-      --rs-muted:#5f6b7a;
-      --bg:#f4f7fb;
-      --card:#ffffff;
-      --border:#e6edf6;
-      --ok:#0a7a2d;
-      --warn:#b36b00;
-      --bad:#b00020;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:16px;
-      --radius-sm:12px;
-      --radius-lg:20px;
-      --maxw:1200px;
-    }
+<style>
+  /* ===== Брендовые токены (Россети) ===== */
+  :root{
+    /* Цвета */
+    --rs-blue:#0033A0;         /* Россети синий */
+    --rs-blue-600:#0A47C6;
+    --rs-accent:#00AEEF;       /* акцент голубой */
+    --ink:#0b1a2b;
+    --muted:#5f6b7a;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --border:#e6edf6;
+    --ok:#0a7a2d;
+    --warn:#b36b00;
+    --bad:#b00020;
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      color:var(--rs-ink);
-      background:linear-gradient(180deg,#f6f9ff 0%, #f4f7fb 60%, #eef3fb 100%);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    /* Геометрия и тени */
+    --radius:16px;
+    --radius-sm:12px;
+    --radius-lg:22px;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+    --maxw:1200px;
+  }
 
-    /* ====== Хедер ====== */
-    header{
-      position:sticky; top:0; z-index:1000;
-      backdrop-filter:saturate(180%) blur(10px);
-      background:linear-gradient(90deg, rgba(255,255,255,.85), rgba(255,255,255,.75));
-      border-bottom:1px solid var(--border);
-    }
-    .nav{
-      max-width:var(--maxw); margin:auto; padding:14px 20px;
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-    }
-    .logo{
-      display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px;
-      font-family:Montserrat,Inter; color:var(--rs-blue);
-    }
-    .logo .mark{
-      width:34px; height:34px; border-radius:50%;
-      background: conic-gradient(from 0deg, var(--rs-blue), var(--rs-blue-600), var(--rs-accent), var(--rs-blue));
-      box-shadow:inset 0 0 0 4px #fff, 0 6px 16px rgba(0,0,0,.08);
-    }
-    .nav a{font-weight:600; color:var(--rs-ink); opacity:.9}
-    .navlinks{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
-    .cta{
-      padding:10px 16px; border-radius:999px; border:1px solid transparent;
-      background:linear-gradient(90deg,var(--rs-blue),var(--rs-blue-600));
-      color:#fff; font-weight:700; box-shadow:0 6px 20px rgba(10,71,198,.25);
-      transition:.2s transform ease;
-    }
-    .cta:hover{transform:translateY(-1px)}
-    .ghost{
-      padding:10px 16px; border-radius:999px; border:1px solid var(--border); background:#fff; font-weight:700;
-    }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(0,51,160,.10), transparent 60%),
+      radial-gradient(900px 500px at 10% -10%, rgba(0,174,239,.12), transparent 60%),
+      linear-gradient(180deg,#f6f9ff 0%, #f4f7fb 60%, #eef3fb 100%);
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
 
-    /* ====== Хиро ====== */
-    .hero{
-      position:relative; overflow:hidden;
-      background:
-        radial-gradient(1200px 500px at 80% -10%, rgba(0,51,160,.12), transparent 60%),
-        radial-gradient(900px 400px at 10% -10%, rgba(0,174,239,.15), transparent 60%);
-      border-bottom:1px solid var(--border);
-    }
-    .hero .wrap{max-width:var(--maxw); margin:auto; padding:52px 20px 36px; display:grid; grid-template-columns:1.2fr .8fr; gap:28px}
-    .eyebrow{
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(0,174,239,.12); color:var(--rs-blue);
-      padding:8px 12px; border-radius:999px; font-weight:700; font-size:12px; letter-spacing:.4px;
-    }
-    h1{
-      font-family:Montserrat,Inter; font-weight:800; line-height:1.05;
-      font-size: clamp(28px, 4.2vw, 48px);
-      margin:14px 0 14px; color:var(--rs-blue);
-      text-shadow:0 1px 0 rgba(255,255,255,.75);
-    }
-    .lead{font-size: clamp(16px, 2vw, 19px); color:#243042; opacity:.95; max-width:56ch}
-    .hero-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
-    .stat{
-      background:linear-gradient(180deg,#fff, #f7fbff);
-      border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
-      display:flex; align-items:center; gap:14px;
-    }
-    .stat strong{font-size:22px; color:var(--rs-blue)}
-    .illus{
-      align-self:center; justify-self:center; width:min(480px, 95%); aspect-ratio:1.1;
-      background:
-        radial-gradient(600px 260px at 50% -10%, rgba(10,71,198,.25), transparent 55%),
-        linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.65));
-      border:1px solid var(--border); border-radius:24px; box-shadow:0 30px 60px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.6);
-      position:relative; overflow:hidden;
-    }
-    .chip{
-      position:absolute; left:8%; top:10%;
-      background:#fff; border:1px solid var(--border); border-radius:14px; padding:10px 12px; box-shadow:var(--shadow); font-weight:700; color:var(--rs-blue-600)
-    }
-    .chip:nth-child(2){left:auto; right:6%; top:16%}
-    .chip:nth-child(3){left:12%; bottom:12%; top:auto}
-    .chip:nth-child(4){right:8%; bottom:10%; top:auto}
+  /* ===== Прогресс-индикатор прокрутки ===== */
+  .scrollbar{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,var(--rs-accent),var(--rs-blue));
+    z-index:1100;
+  }
 
-    /* ====== Секции ====== */
-    section{max-width:var(--maxw); margin:0 auto; padding:42px 20px}
-    h2{
-      font-family:Montserrat,Inter; font-weight:800; color:#0b1a2b; margin:0 0 16px;
-      font-size: clamp(22px, 3vw, 32px);
-    }
-    .sub{color:var(--rs-muted); margin-top:-6px; margin-bottom:18px}
-    .grid{display:grid; gap:18px}
+  /* ===== Хедер ===== */
+  header{
+    position:sticky; top:0; z-index:1000;
+    backdrop-filter:saturate(180%) blur(10px);
+    background:linear-gradient(90deg, rgba(255,255,255,.85), rgba(255,255,255,.78));
+    border-bottom:1px solid var(--border);
+  }
+  .nav{
+    max-width:var(--maxw); margin:auto; padding:12px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .logo{display:flex; align-items:center; gap:12px; font-family:Montserrat,Inter; font-weight:800; color:var(--rs-blue)}
+  .mark{
+    width:34px; height:34px; border-radius:50%;
+    background:conic-gradient(from 0deg,var(--rs-blue),var(--rs-blue-600),var(--rs-accent),var(--rs-blue));
+    box-shadow:inset 0 0 0 4px #fff, 0 6px 16px rgba(0,0,0,.08);
+  }
+  .navlinks{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+  .nav a{font-weight:600; color:#223049; opacity:.9}
+  .cta{
+    padding:10px 16px; border-radius:999px; border:1px solid transparent;
+    background:linear-gradient(90deg,var(--rs-blue),var(--rs-blue-600));
+    color:#fff; font-weight:800; box-shadow:0 6px 20px rgba(10,71,198,.25);
+    transition:.2s transform ease;
+  }
+  .cta:hover{transform:translateY(-1px)}
+  .ghost{
+    padding:10px 14px; border-radius:999px; border:1px solid var(--border); background:#fff; font-weight:700;
+  }
+
+  /* ===== Хиро с волной ===== */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--border)}
+  .hero .wrap{max-width:var(--maxw); margin:auto; padding:50px 20px 24px; display:grid; grid-template-columns:1.1fr .9fr; gap:28px}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(0,174,239,.12); color:var(--rs-blue);
+    padding:8px 12px; border-radius:999px; font-weight:800; font-size:12px; letter-spacing:.35px;
+  }
+  h1{
+    font-family:Montserrat,Inter; font-weight:800; line-height:1.05;
+    font-size:clamp(28px,4.2vw,48px); margin:14px 0 10px; color:var(--rs-blue);
+    text-shadow:0 1px 0 rgba(255,255,255,.75);
+  }
+  .lead{font-size:clamp(16px,2vw,19px); color:#243042; opacity:.95; max-width:62ch}
+  .hero-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px}
+  .stat{
+    background:linear-gradient(180deg,#fff,#f7fbff);
+    border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:14px; transform:translateY(6px); opacity:0; transition:.6s ease;
+  }
+  .stat._in{transform:none; opacity:1}
+  .stat strong{font-size:22px; color:var(--rs-blue)}
+  .illus{align-self:center; justify-self:center; width:min(520px,95%); aspect-ratio:1.1;
+    background:
+      radial-gradient(600px 260px at 50% -10%, rgba(10,71,198,.24), transparent 55%),
+      linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,255,255,.66));
+    border:1px solid var(--border); border-radius:24px; box-shadow:0 30px 60px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.6);
+    position:relative; overflow:hidden; transform:translateY(12px); opacity:0; transition:.6s ease .1s;
+  }
+  .illus._in{transform:none; opacity:1}
+  .chip{
+    position:absolute; left:8%; top:10%;
+    background:#fff; border:1px solid var(--border); border-radius:14px; padding:10px 12px; box-shadow:var(--shadow); font-weight:800; color:var(--rs-blue-600)
+  }
+  .chip:nth-child(2){left:auto; right:6%; top:16%}
+  .chip:nth-child(3){left:12%; bottom:12%; top:auto}
+  .chip:nth-child(4){right:8%; bottom:10%; top:auto}
+
+  .wave{display:block; width:100%; height:auto}
+
+  /* ===== Секции ===== */
+  section{max-width:var(--maxw); margin:0 auto; padding:40px 20px}
+  h2{font-family:Montserrat,Inter; font-weight:800; color:#0b1a2b; margin:0 0 14px; font-size:clamp(22px,3vw,32px)}
+  .sub{color:var(--muted); margin-top:-6px; margin-bottom:18px}
+  .grid{display:grid; gap:18px}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  .card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; transform:translateY(8px); opacity:0; transition:.6s ease}
+  .card._in{transform:none; opacity:1}
+
+  /* ===== Преимущества ===== */
+  .benefit{display:flex; gap:14px; align-items:flex-start}
+  .icon{
+    width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+    background:linear-gradient(180deg,#eaf4ff,#ffffff); border:1px solid var(--border);
+    color:var(--rs-blue); box-shadow:inset 0 0 0 5px rgba(0,51,160,.05); flex:0 0 36px;
+  }
+  .benefit h3{margin:2px 0 6px; font-size:17px}
+  .benefit p{margin:0; color:#2a3645; opacity:.9}
+
+  /* ===== Табы комплектаций ===== */
+  .tabs{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 14px}
+  .tab{padding:10px 14px; border-radius:999px; border:1px solid var(--border); background:#fff; font-weight:800; color:#243042; cursor:pointer}
+  .tab.active{background:linear-gradient(90deg,#e9f3ff,#ffffff); border-color:#dbe9ff; color:var(--rs-blue)}
+  .list{display:grid; gap:10px; margin-top:4px}
+  .check{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;flex:0 0 22px;background:linear-gradient(180deg,#eafff3,#ffffff);border:1px solid #d8efe2;color:var(--ok)}
+  .price{font-size:28px; font-weight:800; color:#0b1a2b; margin-top:-4px}
+  .actions{display:flex; gap:10px; flex-wrap:wrap}
+  details.table{padding:0}
+  details.table summary{padding:10px 14px; font-weight:800; cursor:pointer}
+  details.table[open] summary{border-bottom:1px solid var(--border)}
+  .tbl{width:100%; border-collapse:collapse; font-size:14px}
+  .tbl th,.tbl td{border-bottom:1px solid var(--border); padding:10px 8px; text-align:left}
+  .tbl th{font-weight:800; color:#243042}
+  .note{font-size:12px; color:#465367}
+
+  /* ===== Калькулятор ===== */
+  .calc{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
+  .field{display:grid; gap:6px}
+  .field label{font-weight:800}
+  .input,select,.range{width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:#fff; font:inherit}
+  .calcout{display:grid; gap:10px}
+  .kpi{display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:linear-gradient(180deg,#fff,#f7fbff)}
+  .kpi strong{font-size:20px; color:var(--rs-blue-600)}
+  .mutetiny{font-size:13px; color:#566277}
+
+  /* ===== Процесс ===== */
+  .steps{position:relative; padding-left:16px; display:grid; gap:12px}
+  .steps::before{content:""; position:absolute; left:6px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,#dbe9ff,#ffffff)}
+  .step{display:grid; gap:6px; padding-left:14px}
+  .bullet{width:14px;height:14px;border-radius:50%; background:linear-gradient(180deg,var(--rs-blue),var(--rs-accent)); border:2px solid #fff; box-shadow:0 0 0 3px #e8f1ff; position:relative; left:-21px; top:8px}
+
+  /* ===== FAQ ===== */
+  details{border:1px solid var(--border); border-radius:12px; background:#fff; box-shadow:var(--shadow)}
+  summary{cursor:pointer; list-style:none; padding:14px 16px; font-weight:800}
+  details[open] summary{border-bottom:1px solid var(--border)}
+  details .ans{padding:14px 16px; color:#263345}
+
+  /* ===== Форма ===== */
+  form{display:grid; gap:12px}
+  .formgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+  textarea.input{min-height:96px; resize:vertical}
+  .consent{display:flex; gap:10px; align-items:flex-start; color:#3a4657; font-size:14px}
+
+  /* ===== Футер ===== */
+  footer{padding:28px 20px 40px; border-top:1px solid var(--border); background:#ffffffcc; backdrop-filter:saturate(160%) blur(6px)}
+  .foot{max-width:var(--maxw); margin:0 auto; display:grid; gap:14px}
+  .foot small{color:var(--muted)}
+
+  /* ===== Мобильная нижняя панель ===== */
+  .mbar{
+    display:none; position:fixed; left:0; right:0; bottom:0; z-index:1001;
+    background:linear-gradient(180deg, #ffffffee, #ffffff); border-top:1px solid var(--border);
+    padding:8px 14px; display:flex; justify-content:space-between; gap:8px;
+  }
+  .mbar a{flex:1; text-align:center; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:#fff; font-weight:800}
+  .mbar a.cta{color:#fff; border:none; background:linear-gradient(90deg,var(--rs-blue),var(--rs-blue-600))}
+  .floating-cta{
+    position:fixed; right:16px; bottom:84px; z-index:1001;
+    box-shadow:0 20px 40px rgba(0,51,160,.35)
+  }
+
+  /* ===== Принт (PDF) ===== */
+  @media print{
+    header,.navlinks,.mbar,.ghost,.floating-cta,.illus,.wave,.controls-only{display:none !important}
+    body{background:#fff}
+    section{padding:18px 0}
+    .card{box-shadow:none; border-color:#dfe7f3}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .card{
-      background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px;
-    }
+  }
 
-    /* ====== Преимущества ====== */
-    .benefit{display:flex; gap:14px; align-items:flex-start}
-    .icon{
-      width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
-      background:linear-gradient(180deg, #eaf4ff, #ffffff); border:1px solid var(--border);
-      color:var(--rs-blue);
-      box-shadow:inset 0 0 0 5px rgba(0,51,160,.05);
-      flex:0 0 36px;
-    }
-    .benefit h3{margin:2px 0 6px; font-size:17px}
-    .benefit p{margin:0; color:#2a3645; opacity:.9}
-
-    /* ====== Пакеты/комплекты ====== */
-    .pack{display:flex; flex-direction:column; gap:14px}
-    .pack .title{font-weight:800; color:var(--rs-blue)}
-    .price{font-size:28px; font-weight:800; color:#0b1a2b}
-    .list{display:grid; gap:10px; margin-top:4px}
-    .list li{display:flex; gap:10px; align-items:flex-start}
-    .check{
-      width:22px; height:22px; border-radius:6px; display:grid; place-items:center; flex:0 0 22px;
-      background:linear-gradient(180deg,#eafff3,#ffffff); border:1px solid #d8efe2; color:var(--ok)
-    }
-    .muted{color:var(--rs-muted)}
-    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px; border:1px solid var(--border); background:#fff}
-    .hit{background:linear-gradient(90deg, #e9f3ff, #ffffff); border-color:#dbe9ff}
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-
-    details.table{padding:0}
-    details.table summary{padding:10px 14px; font-weight:700; cursor:pointer}
-    details.table[open] summary{border-bottom:1px solid var(--border)}
-    .tbl{width:100%; border-collapse:collapse; font-size:14px}
-    .tbl th,.tbl td{border-bottom:1px solid var(--border); padding:10px 8px; text-align:left}
-    .tbl th{font-weight:800; color:#243042}
-    .note{font-size:12px; color:#465367}
-
-    /* ====== Калькулятор ====== */
-    .calc{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
-    .field{display:grid; gap:6px}
-    .field label{font-weight:700}
-    .input, select, .range{
-      width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:#fff; font:inherit
-    }
-    .calcout{display:grid; gap:10px}
-    .kpi{display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:linear-gradient(180deg,#fff,#f7fbff)}
-    .kpi strong{font-size:20px; color:var(--rs-blue-600)}
-
-    /* ====== Процесс ====== */
-    .steps{position:relative; padding-left:16px; display:grid; gap:12px}
-    .steps::before{content:""; position:absolute; left:6px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,#dbe9ff,#ffffff)}
-    .step{display:grid; gap:6px; padding-left:14px}
-    .bullet{width:14px;height:14px;border-radius:50%; background:linear-gradient(180deg,var(--rs-blue),var(--rs-accent)); border:2px solid #fff; box-shadow:0 0 0 3px #e8f1ff; position:relative; left:-21px; top:8px}
-
-    /* ====== FAQ ====== */
-    details{border:1px solid var(--border); border-radius:12px; background:#fff; box-shadow:var(--shadow)}
-    summary{cursor:pointer; list-style:none; padding:14px 16px; font-weight:700}
-    details[open] summary{border-bottom:1px solid var(--border)}
-    details .ans{padding:14px 16px; color:#263345}
-
-    /* ====== Форма ====== */
-    form{display:grid; gap:12px}
-    .formgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-    textarea.input{min-height:96px; resize:vertical}
-    .consent{display:flex; gap:10px; align-items:flex-start; color:#3a4657; font-size:14px}
-
-    /* ====== Футер ====== */
-    footer{padding:28px 20px 40px; border-top:1px solid var(--border); background:#ffffffcc; backdrop-filter:saturate(160%) blur(6px)}
-    .foot{max-width:var(--maxw); margin:0 auto; display:grid; gap:14px}
-    .foot small{color:var(--rs-muted)}
-
-    /* ====== Принт (PDF) ====== */
-    @media print{
-      header,.hero .illus,.navlinks,.ghost,.calc .controls-only,.floating-cta{display:none !important}
-      body{background:#fff}
-      section{padding:18px 0}
-      .card{box-shadow:none; border-color:#dfe7f3}
-      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-      .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    }
-
-    /* ====== Адаптив ====== */
-    @media (max-width:980px){
-      .hero .wrap{grid-template-columns:1fr}
-      .hero-cards{grid-template-columns:1fr 1fr}
-      .grid.cols-3{grid-template-columns:1fr 1fr}
-      .calc{grid-template-columns:1fr}
-    }
-    @media (max-width:640px){
-      .hero-cards{grid-template-columns:1fr}
-      .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
-      .formgrid{grid-template-columns:1fr}
-      .navlinks{display:none}
-      .floating-cta{
-        position:fixed; right:16px; bottom:16px; z-index:1001;
-        box-shadow:0 20px 40px rgba(0,51,160,.35)
-      }
-    }
-  </style>
+  /* ===== Адаптив ===== */
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-cards{grid-template-columns:1fr 1fr}
+    .grid.cols-3{grid-template-columns:1fr 1fr}
+    .calc{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    .navlinks{display:none}
+    .hero-cards{grid-template-columns:1fr}
+    .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
+    .formgrid{grid-template-columns:1fr}
+    .mbar{display:flex}
+  }
+</style>
 </head>
 <body>
 
-  <!-- ====== Header ====== -->
-  <header>
-    <nav class="nav">
-      <div class="logo">
-        <div class="mark" aria-hidden="true"></div>
-        <div>
-          <div style="line-height:1">АО «Россети Кубань»</div>
-          <small style="font-weight:700; color:#243042; opacity:.7">Нетарифные услуги</small>
-        </div>
-      </div>
-      <div class="navlinks">
-        <a href="#packs">Комплекты</a>
-        <a href="#calc">Калькулятор</a>
-        <a href="#process">Как работаем</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <a class="cta" href="#lead">Оставить заявку</a>
-    </nav>
-  </header>
+<div class="scrollbar" id="scrollbar"></div>
 
-  <!-- ====== Hero ====== -->
-  <div class="hero">
-    <div class="wrap">
+<!-- ===== Header ===== -->
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <div class="mark" aria-hidden="true"></div>
       <div>
-        <span class="eyebrow">Солнечная микрогенерация • Комплекты и подключение</span>
-        <h1>Сетевые, гибридные и СБП-решения <span style="color:var(--rs-accent)">под ключ</span></h1>
-        <p class="lead">Оборудование по прайс-листу Хевел, проектирование, техприсоединение, монтаж и ввод в эксплуатацию — в одном окне. Допуслуги оформляются отдельным договором.</p>
-
-        <div class="hero-cards">
-          <div class="stat">
-            <div class="icon" aria-hidden="true">🔌</div>
-            <div>
-              <div class="muted" style="font-weight:700">Сетевые комплекты</div>
-              <strong>от 226 090 ₽</strong>
-            </div>
-          </div>
-          <div class="stat">
-            <div class="icon" aria-hidden="true">⚡</div>
-            <div>
-              <div class="muted" style="font-weight:700">Гибридные комплекты</div>
-              <strong>от 430 290 ₽</strong>
-            </div>
-          </div>
-          <div class="stat">
-            <div class="icon" aria-hidden="true">🔋</div>
-            <div>
-              <div class="muted" style="font-weight:700">СБП-системы</div>
-              <strong>от 308 690 ₽</strong>
-            </div>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:10px; margin-top:22px; flex-wrap:wrap">
-          <a class="cta" href="#packs">Смотреть комплекты</a>
-          <button class="ghost" id="btnPrint" type="button">Печать КП (PDF)</button>
-        </div>
+        <div style="line-height:1">АО «Россети Кубань»</div>
+        <small style="font-weight:700; color:#243042; opacity:.7">Нетарифные услуги</small>
       </div>
+    </div>
+    <div class="navlinks">
+      <a href="#packs">Комплекты</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#process">Как работаем</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div style="display:flex; gap:8px">
+      <button class="ghost" id="btnPrint" type="button">Печать КП (PDF)</button>
+      <a class="cta" href="#lead">Заявка</a>
+    </div>
+  </nav>
+</header>
 
-      <div class="illus">
-        <div class="chip">Проектирование</div>
-        <div class="chip">Поставка</div>
-        <div class="chip">Монтаж</div>
-        <div class="chip">Ввод и учёт</div>
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Солнечная микрогенерация • Комплекты и подключение</span>
+      <h1>Сетевые, гибридные и СБП-решения <span style="color:var(--rs-accent)">под ключ</span></h1>
+      <p class="lead">Оборудование (Хевел), проектирование, техприсоединение, монтаж и ввод в эксплуатацию — в одном окне. Допуслуги оформляются отдельным договором.</p>
+      <div class="hero-cards">
+        <div class="stat"><div class="icon">🔌</div><div><div class="muted" style="font-weight:800">Сетевые комплекты</div><strong>от 226 090 ₽</strong></div></div>
+        <div class="stat"><div class="icon">⚡</div><div><div class="muted" style="font-weight:800">Гибридные комплекты</div><strong>от 430 290 ₽</strong></div></div>
+        <div class="stat"><div class="icon">🔋</div><div><div class="muted" style="font-weight:800">СБП-системы</div><strong>от 308 690 ₽</strong></div></div>
       </div>
+      <div style="display:flex; gap:10px; margin-top:18px; flex-wrap:wrap">
+        <a class="cta" href="#packs">Смотреть комплекты</a>
+        <a class="ghost" href="#calc">Рассчитать</a>
+      </div>
+    </div>
+    <div class="illus">
+      <div class="chip">Проектирование</div>
+      <div class="chip">Поставка</div>
+      <div class="chip">Монтаж</div>
+      <div class="chip">Ввод и учёт</div>
     </div>
   </div>
 
-  <!-- ====== Преимущества ====== -->
-  <section>
-    <h2>Почему через сетевую компанию</h2>
-    <p class="sub">Контролируем точку присоединения и узел учёта. Добавляем проект, монтаж и сервис как нетарифные услуги — клиенту удобно, вам прибыльно.</p>
+  <!-- Волна -->
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="url(#g1)"/>
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0%" stop-color="#e9f3ff"/>
+        <stop offset="100%" stop-color="#ffffff"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
 
-    <div class="grid cols-3">
-      <div class="card benefit">
-        <div class="icon">🧭</div>
-        <div>
-          <h3>Единое окно</h3>
-          <p>Один договор сопровождения: ТУ, проект, монтаж, узел учёта и ввод.</p>
-        </div>
-      </div>
-      <div class="card benefit">
-        <div class="icon">📐</div>
-        <div>
-          <h3>Проект без бюрократии</h3>
-          <p>Готовим проект, согласуем, формируем исполнительную документацию.</p>
-        </div>
-      </div>
-      <div class="card benefit">
-        <div class="icon">📊</div>
-        <div>
-          <h3>Честный учёт</h3>
-          <p>Сертифицированные счётчики, подключение к ЛК, корректная передача данных в сбыт.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ===== Почему через сетевую ===== -->
+<section>
+  <h2>Почему через сетевую компанию</h2>
+  <p class="sub">Контролируем точку присоединения и узел учёта. Добавляем проект, монтаж и сервис как нетарифные услуги — клиенту удобно, вам прибыльно.</p>
+  <div class="grid cols-3">
+    <div class="card benefit"><div class="icon">🧭</div><div><h3>Единое окно</h3><p>Один договор: ТУ, проект, монтаж, узел учёта, ввод.</p></div></div>
+    <div class="card benefit"><div class="icon">📐</div><div><h3>Проект без бюрократии</h3><p>Готовим проект, согласуем, формируем ИД — «под ключ».</p></div></div>
+    <div class="card benefit"><div class="icon">📊</div><div><h3>Честный учёт</h3><p>Сертифицированные счётчики, ЛК, корректная передача данных в сбыт.</p></div></div>
+  </div>
+</section>
 
-  <!-- ====== Комплекты (по презентации) ====== -->
-  <section id="packs">
-    <h2>Комплекты оборудования</h2>
-    <p class="sub">Цены — по прайс-листу из презентации (ФЭМ Хевел, инверторы и сопутствующая комплектация). Монтаж, опоры и автоматические выключатели — отдельно.</p>
+<!-- ===== Комплекты с табами ===== -->
+<section id="packs">
+  <h2>Комплекты оборудования</h2>
+  <p class="sub">Цены — по прайс-листу; монтаж/опоры/АВ — отдельно. Выберите категорию:</p>
 
-    <div class="grid cols-3">
-      <!-- Сетевые -->
-      <div class="card pack">
-        <span class="badge hit">Сетевые СЭС</span>
-        <div class="title">Комплекты сетевых станций</div>
-        <div class="price">от 226 090 ₽</div>
-        <ul class="list">
-          <li><div class="check">✓</div><div>ФЭМ Хевел, инвертор, счётчик э/э, кабельно-проводниковая продукция</div></li>
-          <li><div class="check">✓</div><div>1- и 3-фазные решения 5–100 кВт</div></li>
-          <li><div class="check">ℹ️</div><div class="muted">Без АВ переменного тока, опор и услуг по монтажу</div></li>
-        </ul>
-        <details class="table">
-          <summary>Таблица комплектаций</summary>
-          <table class="tbl">
-            <thead><tr><th>Мощность</th><th>Фаза</th><th>Цена, ₽</th></tr></thead>
-            <tbody id="tbl-setev"></tbody>
-          </table>
-        </details>
-        <div class="actions" style="margin-top:8px">
-          <a class="cta" href="#calc" data-cat="setev">Рассчитать</a>
-          <a class="ghost" href="#lead" data-pack="Сетевой комплект">Заявка</a>
-        </div>
-        <div class="note" style="margin-top:8px">* Цены из презентации. Монтаж, опоры и АВ — отдельно.</div>
+  <div class="tabs">
+    <button class="tab active" data-tab="setev">Сетевые СЭС</button>
+    <button class="tab" data-tab="gibrid">Гибридные СЭС</button>
+    <button class="tab" data-tab="sbp">Системы БП</button>
+  </div>
+
+  <div class="grid cols-3" id="cards">
+    <!-- Карточки будут заполнены из JS под выбранную категорию -->
+  </div>
+</section>
+
+<!-- ===== Калькулятор ===== -->
+<section id="calc">
+  <h2>Калькулятор проекта «под ключ»</h2>
+  <p class="sub">Оборудование — из таблиц выше; проект/ТП, монтаж и материалы — ориентировочно. Дополнительно расчёт выработки и окупаемости.</p>
+
+  <div class="calc card">
+    <div class="controls-only">
+      <div class="field">
+        <label for="cat">Категория</label>
+        <select id="cat" class="input">
+          <option value="setev">Сетевой комплект</option>
+          <option value="gibrid">Гибридный комплект</option>
+          <option value="sbp">Система бесперебойного питания</option>
+        </select>
       </div>
-
-      <!-- Гибридные -->
-      <div class="card pack" style="border:2px solid #dbe9ff">
-        <span class="badge">Гибридные СЭС</span>
-        <div class="title">С накопителем энергии</div>
-        <div class="price">от 430 290 ₽</div>
-        <ul class="list">
-          <li><div class="check">✓</div><div>ФЭМ Хевел, гибридный инвертор, накопитель(и), шины DC</div></li>
-          <li><div class="check">✓</div><div>1- и 3-фазные решения 5–15 кВт + 5–20 кВт·ч</div></li>
-          <li><div class="check">ℹ️</div><div class="muted">Без АВ DC/AC, опор и услуг по монтажу</div></li>
-        </ul>
-        <details class="table">
-          <summary>Таблица комплектаций</summary>
-          <table class="tbl">
-            <thead><tr><th>Мощность</th><th>Фаза</th><th>АКБ, кВт·ч</th><th>Цена, ₽</th></tr></thead>
-            <tbody id="tbl-gibrid"></tbody>
-          </table>
-        </details>
-        <div class="actions" style="margin-top:8px">
-          <a class="cta" href="#calc" data-cat="gibrid">Рассчитать</a>
-          <a class="ghost" href="#lead" data-pack="Гибридный комплект">Заявка</a>
-        </div>
-        <div class="note" style="margin-top:8px">* Цены из презентации. Монтаж, опоры и АВ DC/AC — отдельно.</div>
+      <div class="field">
+        <label for="option">Модель (мощность / АКБ)</label>
+        <select id="option" class="input"></select>
       </div>
-
-      <!-- СБП -->
-      <div class="card pack">
-        <span class="badge">Системы БП</span>
-        <div class="title">Бесперебойное питание</div>
-        <div class="price">от 308 690 ₽</div>
-        <ul class="list">
-          <li><div class="check">✓</div><div>Инвертор, накопитель(и), шины DC, кабельно-монтажный комплект</div></li>
-          <li><div class="check">✓</div><div>1- и 3-фазные решения 5–15 кВт + 5–20 кВт·ч</div></li>
-          <li><div class="check">ℹ️</div><div class="muted">Без АВ DC/AC и услуг по монтажу</div></li>
-        </ul>
-        <details class="table">
-          <summary>Таблица комплектаций</summary>
-          <table class="tbl">
-            <thead><tr><th>Мощность</th><th>Фаза</th><th>АКБ, кВт·ч</th><th>Цена, ₽</th></tr></thead>
-            <tbody id="tbl-sbp"></tbody>
-          </table>
-        </details>
-        <div class="actions" style="margin-top:8px">
-          <a class="cta" href="#calc" data-cat="sbp">Рассчитать</a>
-          <a class="ghost" href="#lead" data-pack="СБП-система">Заявка</a>
-        </div>
-        <div class="note" style="margin-top:8px">* Цены из презентации. Монтаж и АВ DC/AC — отдельно.</div>
+      <div class="field">
+        <label><input type="checkbox" id="add_proj" checked> Включить проект/согласования/ТП (фикс)</label>
+        <input id="proj_cost" class="input" type="number" step="1000" value="45000">
+      </div>
+      <div class="field">
+        <label for="mont_perc">Монтаж и материалы, % от оборудования</label>
+        <input id="mont_perc" class="input" type="number" min="0" max="50" step="1" value="15">
+      </div>
+      <div class="field">
+        <label for="dist">Расстояние до точки присоединения, м</label>
+        <input id="dist" class="input" type="number" min="0" max="200" step="1" value="15">
+      </div>
+      <div class="field">
+        <label for="tariff">Тариф, ₽/кВт·ч (экономия)</label>
+        <input id="tariff" class="input" type="number" step="0.1" value="6.0">
+      </div>
+      <div class="field">
+        <label for="specgen">Удельная выработка, кВт·ч/кВт·год</label>
+        <input id="specgen" class="input" type="number" step="10" value="1300">
+      </div>
+      <div class="field">
+        <label for="term">Рассрочка, мес (опция)</label>
+        <select id="term" class="input">
+          <option value="0">Без рассрочки</option>
+          <option value="36">36</option>
+          <option value="48" selected>48</option>
+          <option value="60">60</option>
+        </select>
       </div>
     </div>
-  </section>
 
-  <!-- ====== Калькулятор ====== -->
-  <section id="calc">
-    <h2>Калькулятор проекта «под ключ»</h2>
-    <p class="sub">Оборудование берётся из таблиц выше; проект/ТП, монтаж и материалы рассчитываются ориентировочно.</p>
+    <div class="calcout">
+      <div class="kpi"><div>Оборудование по прайсу</div><strong id="equip">— ₽</strong></div>
+      <div class="kpi"><div>Проект/ТП</div><strong id="proj">— ₽</strong></div>
+      <div class="kpi"><div>Монтаж и материалы</div><strong id="mont">— ₽</strong></div>
+      <div class="kpi"><div>Итог «под ключ»</div><strong id="sum">— ₽</strong></div>
+      <div class="kpi"><div>Ежемесячный платёж*</div><strong id="pay">— ₽/мес</strong></div>
+      <div class="kpi"><div>Годовая выработка (оценка)</div><strong id="gen">— кВт·ч</strong></div>
+      <div class="kpi"><div>Годовая экономия</div><strong id="save">— ₽/год</strong></div>
+      <div class="kpi"><div>Срок окупаемости ≈</div><strong id="pp">— лет</strong></div>
+      <div class="mutetiny">*Аннуитет 14% годовых. Не является публичной офертой.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
+        <a class="cta" href="#lead">Получить точный расчёт</a>
+        <button class="ghost" type="button" id="toPacks">К комплектам</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="calc card">
-      <div class="controls-only">
-        <div class="field">
-          <label for="cat">Категория</label>
-          <select id="cat" class="input">
-            <option value="setev">Сетевой комплект</option>
-            <option value="gibrid">Гибридный комплект</option>
-            <option value="sbp">Система бесперебойного питания</option>
+<!-- ===== Процесс ===== -->
+<section id="process">
+  <h2>Как мы работаем</h2>
+  <p class="sub">Прозрачный процесс с контролем сроков и качества.</p>
+  <div class="card">
+    <div class="steps">
+      <div class="step"><div class="bullet"></div><strong>1. Заявка и обследование</strong><div class="muted">Адрес, фото кровли/фасада, желаемая мощность, данные счётчика.</div></div>
+      <div class="step"><div class="bullet"></div><strong>2. Проект и ТУ</strong><div class="muted">Готовим проект, согласуем, выпускаем ТУ. Ведём «под ключ».</div></div>
+      <div class="step"><div class="bullet"></div><strong>3. Поставка и монтаж</strong><div class="muted">Комплектуем оборудование, монтируем панели/АКБ/инвертор, собираем щит учёта.</div></div>
+      <div class="step"><div class="bullet"></div><strong>4. Ввод и учёт</strong><div class="muted">ПНР, ввод узла учёта, подключение к ЛК и настройка передачи данных в сбыт.</div></div>
+      <div class="step"><div class="bullet"></div><strong>5. Сервис</strong><div class="muted">Диагностика, чистка панелей, замены, консультации по продаже излишков.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <h2>Частые вопросы</h2>
+  <div class="grid cols-2">
+    <details open><summary>Что входит в обязательное техприсоединение?</summary><div class="ans">Базовое ТП по нормам — без монтажа панелей и без поставки оборудования. Всё сверх базового — нетарифные услуги и оформляется отдельным договором.</div></details>
+    <details><summary>Можно ли рассрочку?</summary><div class="ans">Да, работаем с банками-партнёрами. График и ставка зависят от комплекта и профиля клиента.</div></details>
+    <details><summary>Кто выполняет монтаж?</summary><div class="ans">Сертифицированный подрядчик под контролем сетевой компании. Мы отвечаем за соответствие проекту и качество.</div></details>
+    <details><summary>Как оформляется продажа излишков?</summary><div class="ans">Узел учёта подключается к ЛК и к сбыту. Излишки учитываются и выкупаются по действующим правилам для микрогенерации.</div></details>
+  </div>
+</section>
+
+<!-- ===== Форма ===== -->
+<section id="lead">
+  <h2>Оставить заявку</h2>
+  <p class="sub">Заполните форму — инженер свяжется с вами.</p>
+  <div class="card">
+    <form id="leadForm">
+      <div class="formgrid">
+        <div class="field"><label>Ваше имя</label><input class="input" name="name" placeholder="Иван Петров" required></div>
+        <div class="field"><label>Телефон или email</label><input class="input" name="contact" placeholder="+7 9ХХ ХХХ-ХХ-ХХ / ivan@example.ru" required></div>
+      </div>
+      <div class="formgrid">
+        <div class="field"><label>Адрес объекта</label><input class="input" name="address" placeholder="г. Краснодар, ул. Примерная, 1"></div>
+        <div class="field"><label>Выбранный комплект</label>
+          <select class="input" name="pack">
+            <option>Сетевой комплект</option>
+            <option selected>Гибридный комплект</option>
+            <option>СБП-система</option>
           </select>
         </div>
-        <div class="field">
-          <label for="option">Модель (мощность/АКБ)</label>
-          <select id="option" class="input"></select>
-        </div>
-        <div class="field">
-          <label><input type="checkbox" id="add_proj" checked> Включить проект/согласования/ТП (фикс)</label>
-          <input id="proj_cost" class="input" type="number" step="1000" value="45000">
-        </div>
-        <div class="field">
-          <label for="mont_perc">Монтаж и материалы, % от оборудования</label>
-          <input id="mont_perc" class="input" type="number" min="0" max="50" step="1" value="15">
-        </div>
-        <div class="field">
-          <label for="dist">Расстояние до точки присоединения, м</label>
-          <input id="dist" class="input" type="number" min="0" max="150" step="1" value="15">
-        </div>
-        <div class="field">
-          <label for="term">Рассрочка, мес (опция)</label>
-          <select id="term" class="input">
-            <option value="0">Без рассрочки</option>
-            <option value="36">36</option>
-            <option value="48" selected>48</option>
-            <option value="60">60</option>
-          </select>
-        </div>
       </div>
-
-      <div class="calcout">
-        <div class="kpi"><div>Оборудование по прайсу</div><strong id="equip">— ₽</strong></div>
-        <div class="kpi"><div>Проект/ТП</div><strong id="proj">— ₽</strong></div>
-        <div class="kpi"><div>Монтаж и материалы</div><strong id="mont">— ₽</strong></div>
-        <div class="kpi"><div>Оценка «под ключ»</div><strong id="sum">— ₽</strong></div>
-        <div class="kpi"><div>Ежемесячный платёж*</div><strong id="pay">— ₽/мес</strong></div>
-        <div class="muted" style="font-size:13px">*Расчёт по аннуитету 14% годовых. Не является публичной офертой.</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
-          <a class="cta" href="#lead">Получить точный расчёт</a>
-          <button class="ghost" type="button" id="toPacks">К таблицам</button>
-        </div>
+      <div class="formgrid">
+        <div class="field"><label>Мощность/АКБ</label><input class="input" name="kw" placeholder="напр.: 10 кВт / АКБ 10 кВт·ч"></div>
+        <div class="field"><label>Комментарий</label><input class="input" name="note" placeholder="Удобное время звонка, особенности монтажа"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ====== Процесс ====== -->
-  <section id="process">
-    <h2>Как мы работаем</h2>
-    <p class="sub">Прозрачный процесс с контролем сроков и качества.</p>
-
-    <div class="card">
-      <div class="steps">
-        <div class="step"><div class="bullet"></div><strong>1. Заявка и обследование</strong><div class="muted">Адрес, фото кровли/фасада, данные счётчика и желаемая мощность.</div></div>
-        <div class="step"><div class="bullet"></div><strong>2. Проект и ТУ</strong><div class="muted">Готовим проект, согласуем, выпускаем ТУ. Ведём «под ключ».</div></div>
-        <div class="step"><div class="bullet"></div><strong>3. Поставка и монтаж</strong><div class="muted">Комплектуем оборудование, монтируем панели/АКБ/инвертор, собираем щит учёта.</div></div>
-        <div class="step"><div class="bullet"></div><strong>4. Ввод и подключение к учёту</strong><div class="muted">ПНР, ввод узла учёта, подключение к ЛК и настройка передачи данных в сбыт.</div></div>
-        <div class="step"><div class="bullet"></div><strong>5. Сервис и сопровождение</strong><div class="muted">Диагностика, чистка панелей, замены, консультации по продаже излишков.</div></div>
+      <label class="consent"><input type="checkbox" required> Согласие на обработку персональных данных.</label>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <button class="cta" type="submit">Отправить заявку</button>
+        <button class="ghost" type="reset">Сбросить</button>
       </div>
+      <div id="formMsg" class="muted" style="margin-top:6px"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="foot">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+      <div class="logo"><div class="mark"></div><div style="font-family:Montserrat,Inter; font-weight:800">АО «Россети Кубань»</div></div>
+      <div class="muted">Почта: <a href="mailto:info@yourcompany.ru" style="font-weight:800">info@yourcompany.ru</a></div>
     </div>
-  </section>
+    <small>© 2025. Цены на оборудование — по прайс-листу поставщика; без учёта монтажа, опор и автоматических выключателей. Не является публичной офертой.</small>
+  </div>
+</footer>
 
-  <!-- ====== FAQ ====== -->
-  <section id="faq">
-    <h2>Частые вопросы</h2>
-    <div class="grid cols-2">
-      <details open><summary>Что входит в обязательное техприсоединение?</summary><div class="ans">Базовое ТП по нормам — без монтажа солнечных панелей и без поставки оборудования. Всё сверх базового — нетарифные услуги и оформляется отдельным договором.</div></details>
-      <details><summary>Можно ли рассрочку?</summary><div class="ans">Да, работаем с банками-партнёрами. График и ставка зависят от комплекта и профиля клиента.</div></details>
-      <details><summary>Кто выполняет монтаж?</summary><div class="ans">Сертифицированный подрядчик под контролем сетевой компании. Мы отвечаем за соответствие проекту и качество.</div></details>
-      <details><summary>Как оформляется продажа излишков?</summary><div class="ans">Узел учёта подключается к ЛК и к сбыту. Излишки учитываются и выкупаются по действующим правилам для микрогенерации.</div></details>
-    </div>
-  </section>
+<!-- Мобильная нижняя панель -->
+<nav class="mbar" aria-label="Быстрые действия">
+  <a href="#packs">Пакеты</a>
+  <a class="cta" href="#calc">Калькулятор</a>
+  <a href="#lead">Заявка</a>
+</nav>
 
-  <!-- ====== Форма заявки ====== -->
-  <section id="lead">
-    <h2>Оставить заявку</h2>
-    <p class="sub">Заполните форму — инженер свяжется с вами в ближайшее время.</p>
+<a class="cta floating-cta" href="#lead">Заявка</a>
 
-    <div class="card">
-      <form id="leadForm">
-        <div class="formgrid">
-          <div class="field">
-            <label>Ваше имя</label>
-            <input class="input" name="name" placeholder="Иван Петров" required>
-          </div>
-          <div class="field">
-            <label>Телефон или email</label>
-            <input class="input" name="contact" placeholder="+7 9ХХ ХХХ-ХХ-ХХ / ivan@example.ru" required>
-          </div>
-        </div>
-        <div class="formgrid">
-          <div class="field">
-            <label>Адрес объекта</label>
-            <input class="input" name="address" placeholder="г. Краснодар, ул. Примерная, 1">
-          </div>
-          <div class="field">
-            <label>Выбранный комплект</label>
-            <select class="input" name="pack">
-              <option>Сетевой комплект</option>
-              <option selected>Гибридный комплект</option>
-              <option>СБП-система</option>
-            </select>
-          </div>
-        </div>
-        <div class="formgrid">
-          <div class="field">
-            <label>Мощность/АКБ</label>
-            <input class="input" name="kw" placeholder="Например: 10 кВт / АКБ 10 кВт·ч">
-          </div>
-          <div class="field">
-            <label>Комментарий</label>
-            <input class="input" name="note" placeholder="Удобное время звонка, особенности монтажа">
-          </div>
-        </div>
-        <label class="consent"><input type="checkbox" required> Даю согласие на обработку персональных данных и коммуникации по заявке.</label>
-        <div style="display:flex; gap:10px; flex-wrap:wrap">
-          <button class="cta" type="submit">Отправить заявку</button>
-          <button class="ghost" type="reset">Сбросить</button>
-        </div>
-        <div id="formMsg" class="muted" style="margin-top:6px"></div>
-      </form>
-    </div>
-  </section>
+<script>
+  // ====== Настройки интеграций ======
+  const TELEGRAM_BOT_TOKEN = ""; // "1234567890:AA...XyZ"
+  const TELEGRAM_CHAT_ID   = ""; // "-100123..." или "6714393125"
+  const FALLBACK_EMAIL     = "info@yourcompany.ru";
 
-  <!-- ====== Footer ====== -->
-  <footer>
-    <div class="foot">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
-        <div class="logo">
-          <div class="mark"></div>
-          <div style="font-family:Montserrat,Inter; font-weight:800">АО «Россети Кубань»</div>
-        </div>
-        <div class="muted">Вопросы: <a href="mailto:info@yourcompany.ru" style="font-weight:700">info@yourcompany.ru</a></div>
-      </div>
-      <small>© 2025. Цены на оборудование приведены по презентации поставщика, без учёта монтажа, опор и автоматических выключателей. Не является публичной офертой.</small>
-    </div>
-  </footer>
+  // ====== Прайсы (из презентации) ======
+  const PRICES = {
+    setev: [
+      {kw:5,  phase:'1 фаза', price:226090},
+      {kw:5,  phase:'3 фазы', price:239890},
+      {kw:10, phase:'3 фазы', price:391890},
+      {kw:15, phase:'3 фазы', price:632590},
+      {kw:25, phase:'3 фазы', price:887990},
+      {kw:50, phase:'3 фазы', price:1133790},
+      {kw:100,phase:'3 фазы', price:3293690}
+    ],
+    gibrid: [
+      {kw:5,  phase:'1 фаза', akb:5,  price:430290},
+      {kw:5,  phase:'1 фаза', akb:10, price:586990},
+      {kw:8,  phase:'1 фаза', akb:10, price:775590},
+      {kw:8,  phase:'1 фаза', akb:15, price:932390},
+      {kw:12, phase:'3 фазы', akb:10, price:942090},
+      {kw:12, phase:'3 фазы', akb:15, price:1082090},
+      {kw:12, phase:'3 фазы', akb:20, price:1238790},
+      {kw:15, phase:'3 фазы', akb:15, price:1296890},
+      {kw:15, phase:'3 фазы', akb:20, price:1453590}
+    ],
+    sbp: [
+      {kw:5,  phase:'1 фаза', akb:5,  price:308690},
+      {kw:5,  phase:'1 фаза', akb:10, price:465390},
+      {kw:8,  phase:'1 фаза', akb:10, price:578990},
+      {kw:8,  phase:'1 фаза', akb:15, price:735690},
+      {kw:12, phase:'3 фазы', akb:10, price:630490},
+      {kw:12, phase:'3 фазы', akb:15, price:787090},
+      {kw:12, phase:'3 фазы', akb:20, price:943890},
+      {kw:15, phase:'3 фазы', akb:15, price:932590},
+      {kw:15, phase:'3 фазы', akb:20, price:1089290}
+    ]
+  };
 
-  <!-- Плавающая CTA для мобилы -->
-  <a class="cta floating-cta" href="#lead">Заявка</a>
+  // ====== Утилиты ======
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  const money = n => n.toLocaleString('ru-RU');
+  const clamp = (x,min,max)=>Math.min(max,Math.max(min,x));
 
-  <script>
-    // ========= Настройки интеграций =========
-    // TODO: Заполнить ваши значения
-    const TELEGRAM_BOT_TOKEN = ""; // например: "1234567890:AA...XyZ"
-    const TELEGRAM_CHAT_ID   = ""; // например: "-1001234567890" или "6714393125"
-    const FALLBACK_EMAIL     = "info@yourcompany.ru";
+  // ====== Прогресс-индикатор прокрутки ======
+  const sb = $('#scrollbar');
+  function onScroll(){
+    const h = document.documentElement;
+    const p = (h.scrollTop)/(h.scrollHeight - h.clientHeight) * 100;
+    sb.style.width = p + '%';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-    // ========= Данные из презентации (табличные прайсы) =========
-    // Источник: "Презентация Вольта Энерджи для ПАО РОССЕТИ.pdf"
-    const PRICES = {
-      setev: [
-        {kw:5,  phase:'1 фаза', price:226090},
-        {kw:5,  phase:'3 фазы', price:239890},
-        {kw:10, phase:'3 фазы', price:391890},
-        {kw:15, phase:'3 фазы', price:632590},
-        {kw:25, phase:'3 фазы', price:887990},
-        {kw:50, phase:'3 фазы', price:1133790},
-        {kw:100,phase:'3 фазы', price:3293690}
-      ],
-      gibrid: [
-        {kw:5,  phase:'1 фаза', akb:5,  price:430290},
-        {kw:5,  phase:'1 фаза', akb:10, price:586990},
-        {kw:8,  phase:'1 фаза', akb:10, price:775590},
-        {kw:8,  phase:'1 фаза', akb:15, price:932390},
-        {kw:12, phase:'3 фазы', akb:10, price:942090},
-        {kw:12, phase:'3 фазы', akb:15, price:1082090},
-        {kw:12, phase:'3 фазы', akb:20, price:1238790},
-        {kw:15, phase:'3 фазы', akb:15, price:1296890},
-        {kw:15, phase:'3 фазы', akb:20, price:1453590}
-      ],
-      sbp: [
-        {kw:5,  phase:'1 фаза', akb:5,  price:308690},
-        {kw:5,  phase:'1 фаза', akb:10, price:465390},
-        {kw:8,  phase:'1 фаза', akb:10, price:578990},
-        {kw:8,  phase:'1 фаза', akb:15, price:735690},
-        {kw:12, phase:'3 фазы', akb:10, price:630490},
-        {kw:12, phase:'3 фазы', akb:15, price:787090},
-        {kw:12, phase:'3 фазы', akb:20, price:943890},
-        {kw:15, phase:'3 фазы', akb:15, price:932590},
-        {kw:15, phase:'3 фазы', akb:20, price:1089290}
-      ]
-    };
-
-    // ========= Таблицы на карточках =========
-    function money(n){ return n.toLocaleString('ru-RU'); }
-    function fillTables(){
-      const t1 = document.getElementById('tbl-setev');
-      const t2 = document.getElementById('tbl-gibrid');
-      const t3 = document.getElementById('tbl-sbp');
-      if(t1){
-        t1.innerHTML = PRICES.setev.map(r=>`<tr><td>${r.kw} кВт</td><td>${r.phase}</td><td>${money(r.price)} ₽</td></tr>`).join('');
+  // ====== Плавная прокрутка для якорей ======
+  $$('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){
+        e.preventDefault();
+        document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
       }
-      if(t2){
-        t2.innerHTML = PRICES.gibrid.map(r=>`<tr><td>${r.kw} кВт</td><td>${r.phase}</td><td>${r.akb} кВт·ч</td><td>${money(r.price)} ₽</td></tr>`).join('');
-      }
-      if(t3){
-        t3.innerHTML = PRICES.sbp.map(r=>`<tr><td>${r.kw} кВт</td><td>${r.phase}</td><td>${r.akb} кВт·ч</td><td>${money(r.price)} ₽</td></tr>`).join('');
-      }
-    }
-    document.addEventListener('DOMContentLoaded', fillTables);
+    })
+  });
 
-    // ========= Плавная прокрутка =========
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length>1){
-          e.preventDefault();
-          document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      })
-    });
+  // ====== Анимации появления (IO) ======
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(ent=>{
+      if(ent.isIntersecting){ ent.target.classList.add('_in'); io.unobserve(ent.target); }
+    })
+  }, {threshold:.12});
+  $$('.card, .stat, .illus').forEach(el=>io.observe(el));
 
-    // ========= Печать в PDF =========
-    document.getElementById('btnPrint')?.addEventListener('click', ()=>window.print());
+  // ====== Печать в PDF ======
+  $('#btnPrint')?.addEventListener('click', ()=>window.print());
 
-    // ========= Переход из карточек в калькулятор =========
-    document.querySelectorAll('a.cta[href="#calc"][data-cat]').forEach(btn=>{
+  // ====== Таб-переключатель и карточки ======
+  const cards = $('#cards');
+  const tabs  = $$('.tab');
+  let activeTab = 'setev';
+
+  function renderCards(){
+    const data = PRICES[activeTab];
+    cards.innerHTML = data.slice(0,3).map((r,i)=>`
+      <div class="card pack">
+        <span class="badge">${activeTab==='setev'?'Сетевые СЭС':activeTab==='gibrid'?'Гибридные СЭС':'Системы БП'}</span>
+        <div class="title" style="font-weight:800;color:var(--rs-blue)">${r.kw} кВт • ${r.phase}${r.akb?` • АКБ ${r.akb} кВт·ч`:''}</div>
+        <div class="price">${money(r.price)} ₽</div>
+        <ul class="list">
+          <li><div class="check">✓</div><div>${activeTab!=='sbp'?'ФЭМ Хевел, инвертор, кабель':'Инвертор, АКБ, кабель'}</div></li>
+          <li><div class="check">✓</div><div>${activeTab==='gibrid'?'Гибридный инвертор':'1- и 3-фазные решения'}</div></li>
+          <li><div class="check">ℹ️</div><div class="muted">Без опор/АВ и услуг по монтажу</div></li>
+        </ul>
+        <details class="table" ${i===0?'open':''}>
+          <summary>Сравнить варианты</summary>
+          <table class="tbl">
+            <thead><tr>${activeTab==='setev'
+              ?'<th>Мощность</th><th>Фаза</th><th>Цена, ₽</th>'
+              :'<th>Мощность</th><th>Фаза</th><th>АКБ, кВт·ч</th><th>Цена, ₽</th>'}</tr></thead>
+            <tbody>
+              ${PRICES[activeTab].map(x=> activeTab==='setev'
+                ?`<tr><td>${x.kw} кВт</td><td>${x.phase}</td><td>${money(x.price)} ₽</td></tr>`
+                :`<tr><td>${x.kw} кВт</td><td>${x.phase}</td><td>${x.akb} кВт·ч</td><td>${money(x.price)} ₽</td></tr>`
+              ).join('')}
+            </tbody>
+          </table>
+        </details>
+        <div class="actions" style="margin-top:8px">
+          <a class="cta" href="#calc" data-cat="${activeTab}">Рассчитать</a>
+          <a class="ghost" href="#lead" data-pack="${activeTab==='setev'?'Сетевой комплект':activeTab==='gibrid'?'Гибридный комплект':'СБП-система'}">Заявка</a>
+        </div>
+        <div class="note" style="margin-top:8px">* Цены по прайсу. Монтаж, опоры и АВ — отдельно.</div>
+      </div>
+    `).join('');
+    // Привязки кнопок
+    $$('a.cta[href="#calc"][data-cat]').forEach(btn=>{
       btn.addEventListener('click', ()=>{
-        const cat = btn.getAttribute('data-cat');
-        document.getElementById('cat').value = cat;
-        populateOptions();
-        document.querySelector('#calc')?.scrollIntoView({behavior:'smooth'});
-      })
-    });
-
-    // ========= Калькулятор =========
-    const elCat   = document.getElementById('cat');
-    const elOpt   = document.getElementById('option');
-    const elAddP  = document.getElementById('add_proj');
-    const elProjC = document.getElementById('proj_cost');
-    const elPerc  = document.getElementById('mont_perc');
-    const elDist  = document.getElementById('dist');
-    const elTerm  = document.getElementById('term');
-
-    const outEquip= document.getElementById('equip');
-    const outProj = document.getElementById('proj');
-    const outMont = document.getElementById('mont');
-    const outSum  = document.getElementById('sum');
-    const outPay  = document.getElementById('pay');
-
-    function populateOptions(){
-      const cat = elCat.value;
-      const arr = PRICES[cat] || [];
-      elOpt.innerHTML = arr.map((r,i)=>{
-        const title = (cat==='setev')
-          ? `${r.kw} кВт • ${r.phase} — ${money(r.price)} ₽`
-          : `${r.kw} кВт • ${r.phase} • АКБ ${r.akb} кВт·ч — ${money(r.price)} ₽`;
-        return `<option value="${i}">${title}</option>`;
-      }).join('');
-      // Рекомендованный % монтажа
-      elPerc.value = (cat==='setev') ? 15 : 18;
-      estimate();
-    }
-
-    function estimate(){
-      const cat = elCat.value;
-      const idx = +elOpt.value || 0;
-      const r   = (PRICES[cat] || [])[idx];
-      if(!r){ outEquip.textContent='— ₽'; outProj.textContent='— ₽'; outMont.textContent='— ₽'; outSum.textContent='— ₽'; outPay.textContent='— ₽/мес'; return; }
-
-      const equip = r.price;
-      const proj  = elAddP.checked ? Math.max(0, +elProjC.value||0) : 0;
-      const perc  = Math.max(0, +elPerc.value||0)/100;
-      const dist  = Math.max(0, +elDist.value||0);
-
-      // Монтаж: процент от оборудования + условная надбавка на расстояние (200 ₽/м)
-      const mont  = Math.round(equip*perc + dist*200);
-
-      const sum   = equip + proj + mont;
-
-      outEquip.textContent = money(equip) + ' ₽';
-      outProj.textContent  = money(proj) + ' ₽';
-      outMont.textContent  = money(mont) + ' ₽';
-      outSum.textContent   = money(sum) + ' ₽';
-
-      const m = +elTerm.value;
-      if(m>0){
-        const annual = 0.14;
-        const rmon = annual/12;
-        const pay = sum * (rmon*Math.pow(1+rmon,m)) / (Math.pow(1+rmon,m)-1);
-        outPay.textContent = money(Math.round(pay)) + ' ₽/мес';
-      }else{
-        outPay.textContent = '— ₽/мес';
-      }
-    }
-
-    ['input','change'].forEach(ev=>{
-      elCat.addEventListener(ev, populateOptions);
-      elOpt.addEventListener(ev, estimate);
-      elAddP.addEventListener(ev, estimate);
-      elProjC.addEventListener(ev, estimate);
-      elPerc.addEventListener(ev, estimate);
-      elDist.addEventListener(ev, estimate);
-      elTerm.addEventListener(ev, estimate);
-    });
-    populateOptions();
-
-    document.getElementById('toPacks')?.addEventListener('click', ()=>{
-      document.querySelector('#packs')?.scrollIntoView({behavior:'smooth'});
-    });
-
-    // ========= Отправка формы (Telegram -> fallback email) =========
-    const form = document.getElementById('leadForm');
-    const msg  = document.getElementById('formMsg');
-
-    async function sendTelegram(text){
-      const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-      const payload = { chat_id: TELEGRAM_CHAT_ID, text, parse_mode:'HTML', disable_web_page_preview:true };
-      const res = await fetch(url, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
+        $('#cat').value = btn.getAttribute('data-cat');
+        populateOptions(); document.querySelector('#calc')?.scrollIntoView({behavior:'smooth'});
       });
-      if(!res.ok) throw new Error('Telegram API error: '+res.status);
-      return res.json();
-    }
-
-    form?.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      msg.textContent = '';
-      const data = new FormData(form);
-      const fields = Object.fromEntries(data.entries());
-      const text = [
-        '🟦 <b>Заявка: Солнечная микрогенерация</b>',
-        `👤 Имя: <b>${fields.name||'-'}</b>`,
-        `☎️ Контакт: <b>${fields.contact||'-'}</b>`,
-        `📍 Адрес: <b>${fields.address||'-'}</b>`,
-        `📦 Комплект: <b>${fields.pack||'-'}</b>`,
-        `⚡ Мощность/АКБ: <b>${fields.kw||'-'}</b>`,
-        `📝 Комментарий: ${fields.note||'-'}`
-      ].join('\n');
-
-      try{
-        if(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID){
-          msg.textContent = 'Отправляем...';
-          await sendTelegram(text);
-          msg.textContent = 'Заявка отправлена. Спасибо! Мы свяжемся с вами.';
-          form.reset();
-        }else{
-          const mailto = `mailto:${encodeURIComponent(FALLBACK_EMAIL)}?subject=${encodeURIComponent('Заявка: Солнечная микрогенерация')}&body=${encodeURIComponent(text.replace(/<[^>]+>/g,''))}`;
-          window.location.href = mailto;
-          msg.textContent = 'Открыто почтовое приложение для отправки письма. Если письмо не открылось, свяжитесь с нами по email.';
-        }
-      }catch(err){
-        console.error(err);
-        msg.textContent = 'Не удалось отправить заявку. Попробуйте позже или напишите на email.';
-      }
     });
-  </script>
+    $$('a.ghost[data-pack]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const pack = btn.getAttribute('data-pack');
+        const sel = document.querySelector('select[name="pack"]'); if(sel) sel.value = pack;
+      });
+    });
+    // Ре-анимация карточек
+    $$('.card').forEach(el=>{ el.classList.remove('_in'); io.observe(el); });
+  }
+
+  tabs.forEach(t=>{
+    t.addEventListener('click', ()=>{
+      tabs.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      activeTab = t.getAttribute('data-tab');
+      renderCards();
+    });
+  });
+  renderCards();
+
+  // ====== Калькулятор ======
+  const elCat   = $('#cat'), elOpt = $('#option'), elAddP=$('#add_proj'),
+        elProjC = $('#proj_cost'), elPerc=$('#mont_perc'), elDist=$('#dist'),
+        elTerm  = $('#term'), elTar = $('#tariff'), elSpec = $('#specgen');
+
+  const outEquip=$('#equip'), outProj=$('#proj'), outMont=$('#mont'),
+        outSum  =$('#sum'), outPay=$('#pay'), outGen=$('#gen'),
+        outSave =$('#save'), outPP=$('#pp');
+
+  function populateOptions(){
+    const cat = elCat.value;
+    const arr = PRICES[cat] || [];
+    elOpt.innerHTML = arr.map((r,i)=>{
+      const label = (cat==='setev')
+        ? `${r.kw} кВт • ${r.phase} — ${money(r.price)} ₽`
+        : `${r.kw} кВт • ${r.phase} • АКБ ${r.akb} — ${money(r.price)} ₽`;
+      return `<option value="${i}">${label}</option>`;
+    }).join('');
+    // рекомендация по монтажу
+    elPerc.value = (cat==='setev') ? 15 : 18;
+    estimate();
+  }
+
+  function estimate(){
+    const cat = elCat.value;
+    const arr = PRICES[cat] || [];
+    const idx = clamp(+elOpt.value||0, 0, Math.max(arr.length-1,0));
+    const r   = arr[idx]; if(!r){ return; }
+
+    const equip = r.price;
+    const proj  = elAddP.checked ? Math.max(0, +elProjC.value||0) : 0;
+    const perc  = Math.max(0, +elPerc.value||0)/100;
+    const dist  = Math.max(0, +elDist.value||0);
+
+    // Монтаж: % от оборудования + условная надбавка на трассу (200 ₽/м)
+    const mont  = Math.round(equip*perc + dist*200);
+    const sum   = equip + proj + mont;
+
+    outEquip.textContent = money(equip) + ' ₽';
+    outProj.textContent  = money(proj) + ' ₽';
+    outMont.textContent  = money(mont) + ' ₽';
+    outSum.textContent   = money(sum) + ' ₽';
+
+    // Рассрочка
+    const m = +elTerm.value;
+    if(m>0){
+      const annual = 0.14, rmon = annual/12;
+      const pay = sum * (rmon*Math.pow(1+rmon,m)) / (Math.pow(1+rmon,m)-1);
+      outPay.textContent = money(Math.round(pay)) + ' ₽/мес';
+    }else outPay.textContent = '— ₽/мес';
+
+    // Выработка и окупаемость
+    const kw = r.kw;
+    const spec = Math.max(700, +elSpec.value||1200); // кВт·ч/кВт·год
+    const gen = kw * spec;                            // кВт·ч/год
+    const tariff = Math.max(1, +elTar.value||6.0);    // ₽/кВт·ч
+    const save = gen * tariff;                        // ₽/год
+    const pp = save>0 ? (sum / save) : 0;
+
+    outGen.textContent  = money(Math.round(gen)) + ' кВт·ч';
+    outSave.textContent = money(Math.round(save)) + ' ₽/год';
+    outPP.textContent   = pp>0 ? (pp.toFixed(1)+' лет') : '—';
+
+    // Память выбора
+    const mem = {cat, idx, proj:elAddP.checked, projc:+elProjC.value, perc:+elPerc.value, dist:+elDist.value, term:+elTerm.value, tariff:+elTar.value, spec:+elSpec.value};
+    localStorage.setItem('cfg_solar', JSON.stringify(mem));
+  }
+
+  ['input','change'].forEach(ev=>{
+    [elCat, elOpt, elAddP, elProjC, elPerc, elDist, elTerm, elTar, elSpec].forEach(el=>el.addEventListener(ev, estimate));
+  });
+
+  // Восстановление выбора
+  try{
+    const mem = JSON.parse(localStorage.getItem('cfg_solar')||'null');
+    if(mem){
+      elCat.value = mem.cat || 'setev';
+      populateOptions();
+      elOpt.value = mem.idx || 0;
+      elAddP.checked = !!mem.proj;
+      elProjC.value = mem.projc ?? 45000;
+      elPerc.value  = mem.perc  ?? 15;
+      elDist.value  = mem.dist  ?? 15;
+      elTerm.value  = mem.term  ?? 48;
+      elTar.value   = mem.tariff?? 6.0;
+      elSpec.value  = mem.spec  ?? 1300;
+      estimate();
+    }else{
+      populateOptions();
+    }
+  }catch{ populateOptions(); }
+
+  $('#toPacks')?.addEventListener('click', ()=>$('#packs')?.scrollIntoView({behavior:'smooth'}));
+
+  // ====== Отправка формы (Telegram -> mailto fallback) ======
+  const form = $('#leadForm'), msg = $('#formMsg');
+  async function sendTelegram(text){
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const payload = { chat_id: TELEGRAM_CHAT_ID, text, parse_mode:'HTML', disable_web_page_preview:true };
+    const res = await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!res.ok) throw new Error('Telegram API error: '+res.status);
+    return res.json();
+  }
+  form?.addEventListener('submit', async (e)=>{
+    e.preventDefault(); msg.textContent='';
+    const data = new FormData(form); const f = Object.fromEntries(data.entries());
+    const text = [
+      '🟦 <b>Заявка: Солнечная микрогенерация</b>',
+      `👤 Имя: <b>${f.name||'-'}</b>`,
+      `☎️ Контакт: <b>${f.contact||'-'}</b>`,
+      `📍 Адрес: <b>${f.address||'-'}</b>`,
+      `📦 Комплект: <b>${f.pack||'-'}</b>`,
+      `⚡ Мощность/АКБ: <b>${f.kw||'-'}</b>`,
+      `📝 Комментарий: ${f.note||'-'}`
+    ].join('\n');
+    try{
+      if(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID){
+        msg.textContent='Отправляем...';
+        await sendTelegram(text);
+        msg.textContent='Заявка отправлена. Спасибо! Мы свяжемся с вами.';
+        form.reset();
+      }else{
+        const mailto=`mailto:${encodeURIComponent(FALLBACK_EMAIL)}?subject=${encodeURIComponent('Заявка: Солнечная микрогенерация')}&body=${encodeURIComponent(text.replace(/<[^>]+>/g,''))}`;
+        window.location.href = mailto;
+        msg.textContent='Открыто почтовое приложение для отправки письма.';
+      }
+    }catch(err){
+      console.error(err);
+      msg.textContent='Не удалось отправить заявку. Попробуйте позже или напишите на email.';
+    }
+  });
+</script>
 </body>
 </html>
