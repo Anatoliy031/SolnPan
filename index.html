@@ -805,10 +805,10 @@
       </div>
     </div>
     <div class="card benefit">
-      <div class="icon">💳</div>
+      <div class="icon">🚀</div>
       <div>
-        <h3>Удобная оплата</h3>
-        <p>Рассрочка до 60 месяцев от банков-партнёров. Первый взнос от 10%.</p>
+        <h3>Быстрая реализация</h3>
+        <p>От заявки до запуска — 45 дней. Четкие сроки на каждом этапе работ.</p>
       </div>
     </div>
     <div class="card benefit">
@@ -896,17 +896,6 @@
           <option value="1400">Южные регионы (1400 кВт·ч/кВт·год)</option>
         </select>
       </div>
-      
-      <div class="field">
-        <label for="term">💳 Рассрочка</label>
-        <select id="term" class="input">
-          <option value="0">Без рассрочки (100% оплата)</option>
-          <option value="24">24 месяца</option>
-          <option value="36">36 месяцев</option>
-          <option value="48" selected>48 месяцев</option>
-          <option value="60">60 месяцев</option>
-        </select>
-      </div>
     </div>
 
     <div class="calcout">
@@ -914,12 +903,9 @@
       <div class="kpi"><div>📐 Проект и ТП</div><strong id="proj">— ₽</strong></div>
       <div class="kpi"><div>🔧 Монтаж</div><strong id="mont">— ₽</strong></div>
       <div class="kpi highlight"><div>💵 Итого под ключ</div><strong id="sum">— ₽</strong></div>
-      <div class="kpi"><div>📅 Платёж в месяц*</div><strong id="pay">— ₽/мес</strong></div>
       <div class="kpi"><div>⚡ Годовая выработка</div><strong id="gen">— кВт·ч</strong></div>
       <div class="kpi"><div>💰 Экономия в год</div><strong id="save">— ₽/год</strong></div>
       <div class="kpi highlight"><div>⏱️ Окупаемость</div><strong id="pp">— лет</strong></div>
-      
-      <div class="mutetiny">* При ставке 14% годовых. Не публичная оферта.</div>
       
       <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px">
         <a class="cta" href="#lead">📞 Получить точный расчёт</a>
@@ -1117,54 +1103,15 @@
 <!-- ===== Footer ===== -->
 <footer>
   <div class="foot">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <div class="logo" style="margin-bottom:16px">
-          <div class="mark"></div>
-          <div>
-            <div>АО «Россети Кубань»</div>
-            <small style="opacity:.7">Ваш проводник в мир чистой энергии</small>
-          </div>
-        </div>
-        <p style="color:#465367; line-height:1.6">
-          Официальный партнёр по установке систем солнечной микрогенерации. 
-          Лицензия №ХХХ от 01.01.2025
-        </p>
-        <div class="social">
-          <a href="#" aria-label="Telegram">📱</a>
-          <a href="#" aria-label="WhatsApp">💬</a>
-          <a href="#" aria-label="VK">📘</a>
-          <a href="#" aria-label="YouTube">📺</a>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
+      <div class="logo">
+        <div class="mark"></div>
+        <div>
+          <div>АО «Россети Кубань»</div>
+          <small style="opacity:.7">Солнечная микрогенерация</small>
         </div>
       </div>
-      
-      <div class="foot-col">
-        <h4>Услуги</h4>
-        <a href="#packs">Сетевые СЭС</a>
-        <a href="#packs">Гибридные СЭС</a>
-        <a href="#packs">Системы БП</a>
-        <a href="#calc">Калькулятор</a>
-      </div>
-      
-      <div class="foot-col">
-        <h4>Компания</h4>
-        <a href="#">О нас</a>
-        <a href="#">Лицензии</a>
-        <a href="#">Партнёры</a>
-        <a href="#">Вакансии</a>
-      </div>
-      
-      <div class="foot-col">
-        <h4>Контакты</h4>
-        <a href="tel:+78002001220">8 800 200-12-20</a>
-        <a href="mailto:solar@rosseti-kuban.ru">solar@rosseti-kuban.ru</a>
-        <a href="#">г. Краснодар,<br>ул. Северная, 247</a>
-      </div>
-    </div>
-    
-    <div class="foot-bottom">
-      <small>© 2025 АО «Россети Кубань». Все права защищены. Не является публичной офертой.</small>
-      <small><a href="#">Политика конфиденциальности</a> • <a href="#">Пользовательское соглашение</a></small>
+      <small style="color:var(--muted)">© 2025 АО «Россети Кубань». Все права защищены. Не является публичной офертой.</small>
     </div>
   </div>
 </footer>
@@ -1193,9 +1140,10 @@
 
 <script>
   // ====== Конфигурация ======
-  const TELEGRAM_BOT_TOKEN = ""; 
-  const TELEGRAM_CHAT_ID   = ""; 
-  const FALLBACK_EMAIL     = "solar@rosseti-kuban.ru";
+  const TELEGRAM_BOT_TOKEN = "7615555827:AAEaXkPlizBPRTxruBtA2j402Rw4DT1PxXk"; 
+  const TELEGRAM_CHAT_ID   = ""; // Не используется для email
+  const EMAIL_ADDRESSES    = ["lozaoi@rosseti-kuban.ru", "orrdu@rosseti-kuban.ru"];
+  const FALLBACK_EMAIL     = "lozaoi@rosseti-kuban.ru";
 
   // ====== Прайс-листы (из PDF) ======
   const PRICES = {
@@ -1405,8 +1353,7 @@
     montPerc: $('#mont_perc'),
     dist: $('#dist'),
     tariff: $('#tariff'),
-    specgen: $('#specgen'),
-    term: $('#term')
+    specgen: $('#specgen')
   };
   
   const outputs = {
@@ -1414,7 +1361,6 @@
     proj: $('#proj'),
     mont: $('#mont'),
     sum: $('#sum'),
-    pay: $('#pay'),
     gen: $('#gen'),
     save: $('#save'),
     pp: $('#pp')
@@ -1467,16 +1413,6 @@
     outputs.mont.textContent = money(mont) + ' ₽';
     outputs.sum.textContent = money(total) + ' ₽';
     
-    // Рассрочка
-    const months = +controls.term.value;
-    if (months > 0) {
-      const rate = 0.14 / 12; // 14% годовых
-      const payment = total * rate * Math.pow(1 + rate, months) / (Math.pow(1 + rate, months) - 1);
-      outputs.pay.textContent = money(Math.round(payment)) + ' ₽/мес';
-    } else {
-      outputs.pay.textContent = '—';
-    }
-    
     // Выработка и окупаемость
     const kw = item.kw;
     const specGen = +controls.specgen.value || 1300;
@@ -1498,8 +1434,7 @@
       montPerc: +controls.montPerc.value,
       dist: +controls.dist.value,
       tariff: +controls.tariff.value,
-      specgen: +controls.specgen.value,
-      term: +controls.term.value
+      specgen: +controls.specgen.value
     };
     localStorage.setItem('solar_calc', JSON.stringify(config));
   }
@@ -1523,7 +1458,6 @@
       controls.dist.value = saved.dist ?? 15;
       controls.tariff.value = saved.tariff ?? 6.0;
       controls.specgen.value = saved.specgen ?? 1300;
-      controls.term.value = saved.term ?? 48;
       
       $('#mont_val').textContent = controls.montPerc.value + '%';
       $('#dist_val').textContent = controls.dist.value + ' м';
@@ -1544,17 +1478,20 @@
   const spinner = submitBtn.querySelector('.spinner');
   
   async function sendTelegram(text) {
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    if (!TELEGRAM_BOT_TOKEN) {
       throw new Error('Telegram не настроен');
     }
+    
+    // Добавляем информацию об email адресах в сообщение
+    const messageWithEmails = text + '\n\n📧 Отправить на: ' + EMAIL_ADDRESSES.join(', ');
     
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
     const res = await fetch(url, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text,
+        chat_id: '@' + TELEGRAM_BOT_TOKEN.split(':')[0], // Используем ID бота как chat_id
+        text: messageWithEmails,
         parse_mode: 'HTML'
       })
     });
@@ -1588,6 +1525,8 @@
     ].join('\n');
     
     try {
+      // Примечание: Telegram боты не могут напрямую отправлять email.
+      // Бот должен иметь backend для пересылки на email адреса.
       await sendTelegram(message);
       formMsg.textContent = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
       formMsg.style.color = 'var(--ok)';
@@ -1604,7 +1543,8 @@
       // Fallback на email
       const subject = 'Заявка: Солнечная микрогенерация';
       const body = message.replace(/<[^>]+>/g, '').replace(/\n/g, '%0D%0A');
-      const mailto = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      const emailList = EMAIL_ADDRESSES.join(',');
+      const mailto = `mailto:${emailList}?subject=${encodeURIComponent(subject)}&body=${body}`;
       
       window.location.href = mailto;
       formMsg.textContent = '📧 Открываю почтовый клиент для отправки...';
