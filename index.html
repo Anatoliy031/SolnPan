@@ -9,6 +9,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  // ИНСТРУКЦИЯ ПО НАСТРОЙКЕ АВТОМАТИЧЕСКОЙ ОТПРАВКИ EMAIL:
+  
+  // ВАРИАНТ 1: EmailJS (рекомендуется, бесплатно до 200 писем/месяц)
+  // 1. Зарегистрируйтесь на https://www.emailjs.com/
+  // 2. Создайте Email Service (Gmail, Outlook или другой)
+  // 3. Создайте Email Template со следующими переменными:
+  //    {{to_email}}, {{from_name}}, {{from_email}}, {{phone}}, 
+  //    {{address}}, {{pack_type}}, {{comment}}, {{date}}
+  // 4. Скопируйте ваш Public Key, Service ID и Template ID
+  // 5. Вставьте их в код ниже
+  
+  // ВАРИАНТ 2: Google Apps Script (полностью бесплатно)
+  // Код для Google Apps Script приведен в конце этого файла
+  
+  (function(){
+    // Замените на ваш Public Key из EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY");
+  })();
+</script>
+
 <style>
   /* ===== Брендовые токены (Россети) ===== */
   :root{
@@ -1140,10 +1163,14 @@
 
 <script>
   // ====== Конфигурация ======
-  const TELEGRAM_BOT_TOKEN = "7615555827:AAEaXkPlizBPRTxruBtA2j402Rw4DT1PxXk"; 
-  const TELEGRAM_CHAT_ID   = ""; // Не используется для email
-  const EMAIL_ADDRESSES    = ["lozaoi@rosseti-kuban.ru", "orrdu@rosseti-kuban.ru"];
-  const FALLBACK_EMAIL     = "lozaoi@rosseti-kuban.ru";
+  const EMAIL_ADDRESSES = ["lozaoi@rosseti-kuban.ru", "orrdu@rosseti-kuban.ru"];
+  
+  // EmailJS конфигурация (получите эти данные на https://www.emailjs.com/)
+  const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // Замените на ваш Service ID
+  const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // Замените на ваш Template ID
+  
+  // Альтернатива: Google Apps Script endpoint (инструкция ниже)
+  const GOOGLE_SCRIPT_URL = ""; // Вставьте URL вашего Google Apps Script
 
   // ====== Прайс-листы (из PDF) ======
   const PRICES = {
@@ -1477,27 +1504,53 @@
   const submitBtn = form.querySelector('button[type="submit"]');
   const spinner = submitBtn.querySelector('.spinner');
   
-  async function sendTelegram(text) {
-    if (!TELEGRAM_BOT_TOKEN) {
-      throw new Error('Telegram не настроен');
+  // Вариант 1: Отправка через EmailJS
+  async function sendViaEmailJS(fields) {
+    if (!EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID") {
+      throw new Error('EmailJS не настроен');
     }
     
-    // Добавляем информацию об email адресах в сообщение
-    const messageWithEmails = text + '\n\n📧 Отправить на: ' + EMAIL_ADDRESSES.join(', ');
+    const templateParams = {
+      to_email: EMAIL_ADDRESSES.join(','), // Отправка на оба адреса
+      from_name: fields.name,
+      from_email: fields.email || 'не указан',
+      phone: fields.phone,
+      address: fields.address || 'не указан',
+      pack_type: fields.pack || 'не выбран',
+      comment: fields.comment || 'без комментария',
+      date: new Date().toLocaleString('ru-RU')
+    };
     
-    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const res = await fetch(url, {
+    return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+  }
+  
+  // Вариант 2: Отправка через Google Apps Script
+  async function sendViaGoogleScript(fields) {
+    if (!GOOGLE_SCRIPT_URL) {
+      throw new Error('Google Script не настроен');
+    }
+    
+    const data = {
+      emails: EMAIL_ADDRESSES,
+      subject: 'Заявка: Солнечная микрогенерация',
+      name: fields.name,
+      phone: fields.phone,
+      email: fields.email || '',
+      address: fields.address || '',
+      pack: fields.pack || '',
+      comment: fields.comment || '',
+      date: new Date().toLocaleString('ru-RU')
+    };
+    
+    const res = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        chat_id: '@' + TELEGRAM_BOT_TOKEN.split(':')[0], // Используем ID бота как chat_id
-        text: messageWithEmails,
-        parse_mode: 'HTML'
-      })
+      body: JSON.stringify(data)
     });
     
-    if (!res.ok) throw new Error('Ошибка отправки');
-    return res.json();
+    // no-cors не возвращает ответ, считаем успешным
+    return {ok: true};
   }
   
   form?.addEventListener('submit', async (e) => {
@@ -1525,22 +1578,41 @@
     ].join('\n');
     
     try {
-      // Примечание: Telegram боты не могут напрямую отправлять email.
-      // Бот должен иметь backend для пересылки на email адреса.
-      await sendTelegram(message);
-      formMsg.textContent = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-      formMsg.style.color = 'var(--ok)';
-      form.reset();
+      // Попробуем отправить через EmailJS
+      if (EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID") {
+        await sendViaEmailJS(fields);
+        formMsg.textContent = '✅ Заявка отправлена на email! Мы свяжемся с вами в ближайшее время.';
+        formMsg.style.color = 'var(--ok)';
+        form.reset();
+        submitBtn.innerHTML = '✅ Отправлено!';
+      } 
+      // Или через Google Apps Script
+      else if (GOOGLE_SCRIPT_URL) {
+        await sendViaGoogleScript(fields);
+        formMsg.textContent = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+        formMsg.style.color = 'var(--ok)';
+        form.reset();
+        submitBtn.innerHTML = '✅ Отправлено!';
+      } 
+      // Fallback на mailto
+      else {
+        const subject = 'Заявка: Солнечная микрогенерация';
+        const body = message.replace(/<[^>]+>/g, '').replace(/\n/g, '%0D%0A');
+        const emailList = EMAIL_ADDRESSES.join(',');
+        const mailto = `mailto:${emailList}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        
+        window.location.href = mailto;
+        formMsg.textContent = '📧 Открываю почтовый клиент для отправки...';
+        formMsg.style.color = 'var(--warn)';
+      }
       
-      // Успешная анимация
-      submitBtn.innerHTML = '✅ Отправлено!';
       setTimeout(() => {
         submitBtn.innerHTML = '📨 Отправить заявку';
       }, 3000);
       
     } catch (err) {
-      console.error(err);
-      // Fallback на email
+      console.error('Ошибка отправки:', err);
+      // Fallback на mailto при любой ошибке
       const subject = 'Заявка: Солнечная микрогенерация';
       const body = message.replace(/<[^>]+>/g, '').replace(/\n/g, '%0D%0A');
       const emailList = EMAIL_ADDRESSES.join(',');
@@ -1758,7 +1830,61 @@
   // ====== Финальная инициализация ======
   console.log('🌟 Сайт Россети Кубань - Солнечная микрогенерация');
   console.log('💡 Версия: 2.0.0');
-  console.log('📧 Контакты: solar@rosseti-kuban.ru');
+  console.log('📧 Email: lozaoi@rosseti-kuban.ru, orrdu@rosseti-kuban.ru');
+
+/* 
+====== КОД ДЛЯ GOOGLE APPS SCRIPT (ВАРИАНТ 2) ======
+
+Если вы хотите использовать бесплатное решение через Google:
+
+1. Откройте https://script.google.com/
+2. Создайте новый проект
+3. Вставьте следующий код:
+
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    
+    // Email адреса получателей
+    const recipients = data.emails.join(',');
+    
+    // Формирование письма
+    const subject = data.subject || 'Новая заявка с сайта';
+    const htmlBody = `
+      <h2>Новая заявка: Солнечная микрогенерация</h2>
+      <table style="border-collapse: collapse; width: 100%;">
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Имя:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.name}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Телефон:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.phone}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Email:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.email || 'не указан'}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Адрес объекта:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.address || 'не указан'}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Тип комплекта:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.pack || 'не выбран'}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Комментарий:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.comment || 'отсутствует'}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Дата заявки:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.date}</td></tr>
+      </table>
+    `;
+    
+    // Отправка email
+    GmailApp.sendEmail(recipients, subject, '', {
+      htmlBody: htmlBody,
+      name: 'Сайт Россети Кубань'
+    });
+    
+    return ContentService.createTextOutput('OK');
+  } catch (error) {
+    console.error(error);
+    return ContentService.createTextOutput('ERROR');
+  }
+}
+
+4. Сохраните проект
+5. Нажмите "Развернуть" > "Новое развертывание"
+6. Выберите тип "Веб-приложение"
+7. Установите "Кто имеет доступ" = "Все"
+8. Скопируйте URL развертывания
+9. Вставьте URL в переменную GOOGLE_SCRIPT_URL в начале этого файла
+
+====== КОНЕЦ КОДА GOOGLE APPS SCRIPT ======
+*/
 </script>
 
 </body>
