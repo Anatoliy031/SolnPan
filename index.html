@@ -36,276 +36,189 @@
   /* ===== Брендовые токены (Россети) ===== */
   :root{
     /* Официальные цвета Россети */
-    --rs-blue:#0033A0;         /* Основной синий Россети */
-    --rs-blue-dark:#002170;    /* Темный синий */
-    --rs-blue-600:#0A47C6;
-    --rs-accent:#00AEEF;       /* Акцент голубой */
-    --rs-green:#78BE20;        /* Зеленый (энергия) */
-    --rs-orange:#FF6900;       /* Оранжевый (солнце) */
+    --rs-blue:#004B87;         /* Основной синий Россети */
+    --rs-blue-dark:#003366;    /* Темный синий */
+    --rs-blue-light:#0066CC;   /* Светлый синий */
+    --rs-accent:#0084FF;       /* Акцентный синий */
+    --rs-green:#4CAF50;        /* Зеленый (энергия) */
     
     /* UI цвета */
-    --ink:#0b1a2b;
-    --muted:#5f6b7a;
-    --bg:#f4f7fb;
-    --card:#ffffff;
-    --border:#e6edf6;
-    --ok:#0a7a2d;
-    --warn:#b36b00;
-    --bad:#b00020;
+    --ink:#333333;
+    --muted:#666666;
+    --bg:#FFFFFF;
+    --bg-gray:#F5F5F5;
+    --card:#FFFFFF;
+    --border:#E0E0E0;
+    --ok:#4CAF50;
+    --warn:#FF9800;
+    --bad:#F44336;
 
     /* Геометрия и тени */
-    --radius:16px;
-    --radius-sm:12px;
-    --radius-lg:22px;
-    --shadow:0 10px 30px rgba(0,0,0,.08);
-    --shadow-hover:0 20px 40px rgba(0,0,0,.12);
-    --maxw:1200px;
+    --radius:4px;
+    --radius-sm:2px;
+    --radius-lg:8px;
+    --shadow:0 2px 4px rgba(0,0,0,.1);
+    --shadow-hover:0 4px 8px rgba(0,0,0,.15);
+    --maxw:1140px;
     
     /* Анимации */
-    --ease-out:cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-out:cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-in-out:cubic-bezier(0.42, 0, 0.58, 1);
   }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
     color:var(--ink);
-    background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(0,51,160,.08), transparent 60%),
-      radial-gradient(900px 500px at 10% -10%, rgba(0,174,239,.10), transparent 60%),
-      linear-gradient(180deg,#f6f9ff 0%, #f4f7fb 60%, #eef3fb 100%);
+    background:var(--bg);
     -webkit-font-smoothing:antialiased; 
     -moz-osx-font-smoothing:grayscale;
     overflow-x:hidden;
+    line-height:1.5;
   }
-  a{color:inherit;text-decoration:none;transition:color .2s}
-  a:hover{color:var(--rs-blue)}
+  a{color:var(--rs-blue);text-decoration:none;transition:color .2s}
+  a:hover{color:var(--rs-blue-light);text-decoration:underline}
   img{max-width:100%;display:block}
 
   /* ===== Прогресс-индикатор ===== */
   .scrollbar{
     position:fixed; top:0; left:0; height:3px; width:0%;
-    background:linear-gradient(90deg,var(--rs-accent),var(--rs-blue),var(--rs-green));
+    background:var(--rs-blue);
     z-index:1100;
     transition:width .1s var(--ease-out);
   }
 
-  /* ===== Хедер с улучшенным дизайном ===== */
+  /* ===== Хедер с корпоративным стилем ===== */
   header{
     position:sticky; top:0; z-index:1000;
-    backdrop-filter:saturate(180%) blur(20px);
-    background:linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,.88));
+    background:#FFFFFF;
     border-bottom:1px solid var(--border);
-    box-shadow:0 2px 10px rgba(0,0,0,.03);
+    box-shadow:0 1px 3px rgba(0,0,0,.1);
   }
   .nav{
-    max-width:var(--maxw); margin:auto; padding:12px 20px;
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    max-width:var(--maxw); margin:auto; padding:0 15px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:70px;
   }
-  .logo{display:flex; align-items:center; gap:12px; font-family:Montserrat,Inter; font-weight:800; color:var(--rs-blue)}
-  .mark{
-    width:36px; height:36px; border-radius:50%;
-    background:conic-gradient(from 0deg,var(--rs-blue),var(--rs-blue-600),var(--rs-accent),var(--rs-blue));
-    box-shadow:inset 0 0 0 4px #fff, 0 6px 16px rgba(0,0,0,.08);
-    animation:rotate 20s linear infinite;
+  .logo{
+    display:flex; align-items:center; gap:12px; 
+    font-weight:700; color:var(--rs-blue);
   }
-  @keyframes rotate{to{transform:rotate(360deg)}}
+  .logo-img{
+    height:40px; width:auto;
+  }
+  .logo-text{
+    display:flex; flex-direction:column; line-height:1.2;
+  }
+  .logo-text .company{font-size:18px;}
+  .logo-text .dept{font-size:14px; color:var(--muted); font-weight:400;}
   
-  .navlinks{display:flex; gap:20px; align-items:center; flex-wrap:wrap}
-  .nav a{font-weight:600; color:#223049; opacity:.9; position:relative}
+  .navlinks{display:flex; gap:30px; align-items:center;}
+  .nav a{font-weight:400; color:var(--ink); position:relative; font-size:15px;}
+  .navlinks a:hover{text-decoration:none; color:var(--rs-blue);}
   .navlinks a::after{
-    content:''; position:absolute; bottom:-2px; left:0; right:0; height:2px;
-    background:var(--rs-blue); transform:scaleX(0); transition:.3s transform var(--ease-out);
+    content:''; position:absolute; bottom:-25px; left:0; right:0; height:3px;
+    background:var(--rs-blue); transform:scaleX(0); transition:.2s transform;
   }
-  .navlinks a:hover::after{transform:scaleX(1)}
+  .navlinks a:hover::after{transform:scaleX(1);}
   
-  /* Улучшенные кнопки */
-  .cta{
-    padding:10px 20px; border-radius:999px; border:1px solid transparent;
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-blue-600));
-    color:#fff; font-weight:800; 
-    box-shadow:0 6px 20px rgba(10,71,198,.25), inset 0 1px 0 rgba(255,255,255,.1);
-    transition:all .3s var(--ease-out);
-    display:inline-flex; align-items:center; gap:8px;
-    position:relative; overflow:hidden;
+  /* Кнопки в корпоративном стиле */
+  .btn{
+    padding:10px 24px; border-radius:var(--radius); border:none;
+    font-weight:500; font-size:15px; cursor:pointer;
+    transition:all .2s; display:inline-block; text-align:center;
+    text-decoration:none;
   }
-  .cta::before{
-    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
-    transition:.5s;
+  .btn-primary{
+    background:var(--rs-blue); color:#fff;
   }
-  .cta:hover{
-    transform:translateY(-2px); 
-    box-shadow:0 10px 30px rgba(10,71,198,.35), inset 0 1px 0 rgba(255,255,255,.2);
+  .btn-primary:hover{
+    background:var(--rs-blue-dark); 
+    text-decoration:none; color:#fff;
   }
-  .cta:hover::before{left:100%}
-  
-  .ghost{
-    padding:10px 16px; border-radius:999px; border:1px solid var(--border); 
-    background:#fff; font-weight:700;
-    transition:all .3s var(--ease-out);
+  .btn-secondary{
+    background:#fff; color:var(--rs-blue); 
+    border:1px solid var(--rs-blue);
   }
-  .ghost:hover{
-    border-color:var(--rs-blue); 
-    background:rgba(0,51,160,.04);
-    transform:translateY(-1px);
+  .btn-secondary:hover{
+    background:var(--rs-blue); color:#fff;
+    text-decoration:none;
   }
 
   /* ===== Мобильное меню ===== */
   .menu-toggle{
-    display:none; width:32px; height:32px; 
-    background:transparent; border:none; cursor:pointer;
-    position:relative; z-index:1100;
+    display:none; width:40px; height:40px; 
+    background:transparent; border:1px solid var(--border); 
+    cursor:pointer; position:relative;
   }
   .menu-toggle span{
-    display:block; width:22px; height:2px; background:var(--rs-blue);
+    display:block; width:20px; height:2px; background:var(--rs-blue);
     position:absolute; left:50%; transform:translateX(-50%);
-    transition:.3s;
+    transition:.2s;
   }
-  .menu-toggle span:nth-child(1){top:8px}
-  .menu-toggle span:nth-child(2){top:15px}
-  .menu-toggle span:nth-child(3){bottom:8px}
-  .menu-toggle.active span:nth-child(1){transform:translateX(-50%) rotate(45deg); top:15px}
+  .menu-toggle span:nth-child(1){top:11px}
+  .menu-toggle span:nth-child(2){top:19px}
+  .menu-toggle span:nth-child(3){bottom:11px}
+  .menu-toggle.active span:nth-child(1){transform:translateX(-50%) rotate(45deg); top:19px}
   .menu-toggle.active span:nth-child(2){opacity:0}
-  .menu-toggle.active span:nth-child(3){transform:translateX(-50%) rotate(-45deg); bottom:15px}
+  .menu-toggle.active span:nth-child(3){transform:translateX(-50%) rotate(-45deg); bottom:19px}
 
-  /* ===== Hero с анимациями ===== */
-  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--border)}
+  /* ===== Hero корпоративный ===== */
+  .hero{
+    background:var(--bg-gray);
+    border-bottom:1px solid var(--border);
+  }
   .hero .wrap{
-    max-width:var(--maxw); margin:auto; padding:60px 20px 30px; 
-    display:grid; grid-template-columns:1.1fr .9fr; gap:32px;
+    max-width:var(--maxw); margin:auto; padding:60px 15px; 
   }
   
-  /* Плавающие элементы фона */
-  .float-el{
-    position:absolute; border-radius:50%; 
-    background:radial-gradient(circle, var(--rs-accent), transparent 70%);
-    opacity:.1; animation:float 20s infinite ease-in-out;
+  .breadcrumb{
+    font-size:14px; color:var(--muted); margin-bottom:30px;
   }
-  .float-el:nth-child(1){width:300px; height:300px; top:-100px; left:-50px; animation-duration:25s}
-  .float-el:nth-child(2){width:200px; height:200px; bottom:-50px; right:10%; animation-duration:30s; animation-delay:5s}
-  @keyframes float{
-    0%,100%{transform:translateY(0) rotate(0deg)}
-    50%{transform:translateY(-20px) rotate(180deg)}
-  }
-  
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    background:linear-gradient(135deg, rgba(0,174,239,.15), rgba(120,190,32,.10));
-    color:var(--rs-blue);
-    padding:8px 14px; border-radius:999px; font-weight:800; font-size:12px; 
-    letter-spacing:.35px; text-transform:uppercase;
-    animation:slideDown .6s var(--ease-out);
-  }
-  @keyframes slideDown{
-    from{opacity:0; transform:translateY(-20px)}
-    to{opacity:1; transform:translateY(0)}
-  }
+  .breadcrumb a{color:var(--muted)}
+  .breadcrumb a:hover{color:var(--rs-blue)}
   
   h1{
-    font-family:Montserrat,Inter; font-weight:800; line-height:1.05;
-    font-size:clamp(32px,4.5vw,52px); margin:16px 0 12px; 
-    background:linear-gradient(135deg, var(--rs-blue), var(--rs-blue-600));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    animation:slideUp .6s .1s var(--ease-out) both;
-  }
-  @keyframes slideUp{
-    from{opacity:0; transform:translateY(20px)}
-    to{opacity:1; transform:translateY(0)}
+    font-size:36px; font-weight:700; line-height:1.2;
+    margin:0 0 20px; color:var(--rs-blue);
   }
   
   .lead{
-    font-size:clamp(17px,2vw,20px); color:#243042; opacity:.95; 
-    max-width:62ch; line-height:1.6;
-    animation:slideUp .6s .2s var(--ease-out) both;
+    font-size:18px; color:var(--ink); 
+    max-width:800px; line-height:1.6; margin-bottom:30px;
   }
   
-  .hero-cards{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px;
-    animation:slideUp .6s .3s var(--ease-out) both;
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px; 
+    margin-top:40px; max-width:800px;
   }
-  .stat{
-    background:linear-gradient(180deg,#fff,#f7fbff);
-    border:1px solid var(--border); border-radius:var(--radius); 
-    padding:18px; box-shadow:var(--shadow);
-    display:flex; align-items:center; gap:14px; 
-    transition:all .3s var(--ease-out);
-    cursor:default;
+  .stat-card{
+    background:#fff; border:1px solid var(--border); 
+    padding:20px; text-align:center;
   }
-  .stat:hover{
-    transform:translateY(-4px);
-    box-shadow:var(--shadow-hover);
-    border-color:rgba(0,51,160,.15);
+  .stat-card .number{
+    font-size:32px; font-weight:700; color:var(--rs-blue); 
+    margin-bottom:5px;
   }
-  .stat .icon{font-size:28px; filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}
-  .stat strong{font-size:24px; color:var(--rs-blue)}
-  .stat .label{font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px}
-  
-  /* Интерактивная иллюстрация */
-  .illus{
-    align-self:center; justify-self:center; 
-    width:min(520px,95%); aspect-ratio:1.1;
-    background:
-      radial-gradient(circle at 50% 50%, rgba(120,190,32,.08), transparent 50%),
-      radial-gradient(600px 260px at 50% -10%, rgba(10,71,198,.20), transparent 55%),
-      linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,255,255,.66));
-    border:1px solid var(--border); border-radius:24px; 
-    box-shadow:0 30px 60px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.6);
-    position:relative; overflow:hidden;
-    animation:slideUp .6s .4s var(--ease-out) both;
+  .stat-card .label{
+    font-size:14px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.5px;
   }
-  .illus::before{
-    content:''; position:absolute; inset:0;
-    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230033A0' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity:.5;
-  }
-  
-  .chip{
-    position:absolute; 
-    background:#fff; border:1px solid var(--border); border-radius:14px; 
-    padding:10px 14px; box-shadow:var(--shadow); 
-    font-weight:800; color:var(--rs-blue-600);
-    cursor:pointer; transition:all .3s var(--ease-out);
-  }
-  .chip:hover{transform:translateY(-2px) scale(1.05); box-shadow:var(--shadow-hover)}
-  .chip .emoji{font-size:18px; margin-right:6px}
-  .chip:nth-child(1){left:8%; top:10%; animation:float 4s infinite ease-in-out}
-  .chip:nth-child(2){left:auto; right:6%; top:20%; animation:float 4s .5s infinite ease-in-out}
-  .chip:nth-child(3){left:12%; bottom:15%; top:auto; animation:float 4s 1s infinite ease-in-out}
-  .chip:nth-child(4){right:8%; bottom:10%; top:auto; animation:float 4s 1.5s infinite ease-in-out}
-
-  /* Солнечная панель в центре иллюстрации */
-  .solar-panel{
-    position:absolute; left:50%; top:50%; 
-    transform:translate(-50%,-50%) perspective(800px) rotateX(25deg);
-    width:200px; height:140px;
-    background:linear-gradient(135deg,#1a237e,#283593);
-    border-radius:8px; box-shadow:0 20px 40px rgba(0,0,0,.2);
-    display:grid; grid-template-columns:repeat(5,1fr); grid-template-rows:repeat(3,1fr);
-    gap:2px; padding:8px;
-  }
-  .solar-cell{
-    background:linear-gradient(135deg,#3949ab,#5c6bc0);
-    border-radius:2px;
-  }
-
-  .wave{display:block; width:100%; height:auto; margin-top:-1px}
 
   /* ===== Секции ===== */
-  section{max-width:var(--maxw); margin:0 auto; padding:60px 20px}
+  section{
+    max-width:var(--maxw); margin:0 auto; padding:60px 15px;
+  }
   h2{
-    font-family:Montserrat,Inter; font-weight:800; color:#0b1a2b; 
-    margin:0 0 16px; font-size:clamp(26px,3.5vw,36px);
-    position:relative; display:inline-block;
+    font-size:28px; font-weight:700; color:var(--ink); 
+    margin:0 0 30px; text-align:center;
   }
-  h2::after{
-    content:''; position:absolute; bottom:-8px; left:0; 
-    width:60px; height:4px; background:linear-gradient(90deg,var(--rs-blue),var(--rs-accent));
-    border-radius:2px;
+  .section-desc{
+    color:var(--muted); margin:-20px auto 40px; 
+    font-size:16px; text-align:center; max-width:700px;
   }
-  .sub{color:var(--muted); margin-top:-6px; margin-bottom:24px; font-size:17px; line-height:1.5}
   
   .grid{display:grid; gap:20px}
   .grid.cols-3{grid-template-columns:repeat(3,1fr)}
@@ -313,318 +226,177 @@
   
   .card{
     background:#fff; border:1px solid var(--border); 
-    border-radius:var(--radius); box-shadow:var(--shadow); 
-    padding:24px; transform:translateY(8px); opacity:0; 
-    transition:all .5s var(--ease-out);
-    position:relative; overflow:hidden;
+    padding:30px; transition:all .2s;
   }
-  .card::before{
-    content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--rs-blue),var(--rs-accent),var(--rs-green));
-    transform:scaleX(0); transition:.4s transform var(--ease-out);
+  .card:hover{
+    box-shadow:var(--shadow-hover);
   }
-  .card:hover::before{transform:scaleX(1)}
-  .card._in{transform:none; opacity:1}
 
-  /* ===== Преимущества ===== */
-  .benefit{display:flex; gap:16px; align-items:flex-start}
+  /* ===== Преимущества корпоративные ===== */
+  .benefit{padding:0;}
   .icon{
-    width:48px; height:48px; border-radius:12px; display:grid; place-items:center;
-    background:linear-gradient(135deg,#eaf4ff,#ffffff); 
-    border:1px solid var(--border);
-    box-shadow:inset 0 0 0 6px rgba(0,51,160,.05), 0 4px 12px rgba(0,51,160,.08); 
-    flex:0 0 48px; font-size:24px;
-    transition:all .3s var(--ease-out);
+    width:60px; height:60px; display:grid; place-items:center;
+    background:var(--bg-gray); 
+    margin-bottom:20px; font-size:30px; color:var(--rs-blue);
   }
-  .benefit:hover .icon{
-    transform:translateY(-2px) rotate(5deg);
-    box-shadow:inset 0 0 0 6px rgba(0,51,160,.08), 0 8px 20px rgba(0,51,160,.15);
-  }
-  .benefit h3{margin:0 0 8px; font-size:18px; color:var(--rs-blue)}
-  .benefit p{margin:0; color:#2a3645; opacity:.9; line-height:1.5}
+  .benefit h3{margin:0 0 10px; font-size:18px; color:var(--rs-blue)}
+  .benefit p{margin:0; color:var(--ink); line-height:1.6;}
 
-  /* ===== Улучшенные табы ===== */
+  /* ===== Табы ===== */
   .tabs{
-    display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 24px;
-    background:rgba(0,0,0,.02); padding:6px; border-radius:999px;
+    display:flex; gap:0; margin:0 0 30px;
+    border-bottom:2px solid var(--border);
   }
   .tab{
-    padding:12px 20px; border-radius:999px; border:none; 
-    background:transparent; font-weight:800; color:#243042; 
-    cursor:pointer; transition:all .3s var(--ease-out);
-    position:relative;
+    padding:12px 24px; border:none; 
+    background:transparent; color:var(--muted); 
+    cursor:pointer; transition:all .2s;
+    position:relative; font-size:16px;
   }
   .tab:hover{color:var(--rs-blue)}
   .tab.active{
-    background:linear-gradient(135deg,#ffffff,#f0f7ff); 
     color:var(--rs-blue); 
-    box-shadow:0 4px 12px rgba(0,51,160,.15);
+  }
+  .tab.active::after{
+    content:''; position:absolute; bottom:-2px; left:0; right:0;
+    height:2px; background:var(--rs-blue);
   }
 
   /* ===== Карточки комплектов ===== */
-  .pack{position:relative; cursor:pointer}
-  .pack:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,.12)}
-  .badge{
-    display:inline-block; padding:6px 12px; border-radius:20px;
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-blue-600));
-    color:#fff; font-size:12px; font-weight:700; text-transform:uppercase;
-    letter-spacing:.5px; margin-bottom:12px;
+  .pack{text-align:center;}
+  .pack-header{
+    background:var(--rs-blue); color:#fff; 
+    padding:20px; margin:-30px -30px 20px;
   }
-  .title{font-size:20px; font-weight:800; color:var(--rs-blue); margin-bottom:8px}
+  .pack-type{
+    font-size:14px; text-transform:uppercase; 
+    letter-spacing:1px; margin-bottom:10px;
+  }
+  .pack-title{font-size:22px; font-weight:700;}
   .price{
-    font-size:32px; font-weight:800; 
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-green));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    margin:12px 0;
+    font-size:36px; font-weight:700; color:var(--rs-blue);
+    margin:20px 0;
   }
-  .list{display:grid; gap:12px; margin:16px 0}
-  .list li{display:flex; align-items:flex-start; gap:10px}
+  .price small{font-size:16px; font-weight:400;}
+  .features{text-align:left; margin:20px 0;}
+  .features li{
+    display:flex; align-items:center; gap:10px; 
+    padding:10px 0; border-bottom:1px solid var(--bg-gray);
+  }
+  .features li:last-child{border-bottom:none;}
   .check{
-    width:24px; height:24px; border-radius:8px; 
-    display:grid; place-items:center; flex:0 0 24px;
-    background:linear-gradient(135deg,#eafff3,#ffffff); 
-    border:1px solid #d8efe2; color:var(--ok); font-weight:700;
-    box-shadow:inset 0 0 0 4px rgba(10,122,45,.05);
+    width:20px; height:20px; display:grid; place-items:center;
+    background:var(--ok); color:#fff; font-size:12px;
   }
   
-  /* ===== Улучшенный калькулятор ===== */
-  .calc{display:grid; grid-template-columns:1.2fr 1fr; gap:24px}
-  .field{display:grid; gap:8px}
-  .field label{font-weight:700; color:#243042; display:flex; align-items:center; gap:8px}
-  .input,select{
-    width:100%; padding:12px 16px; border-radius:12px; 
-    border:1px solid var(--border); background:#fff; 
-    font:inherit; transition:all .3s;
+  /* ===== Калькулятор корпоративный ===== */
+  .calc{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block; margin-bottom:8px; 
+    font-weight:500; color:var(--ink);
   }
-  .input:hover,select:hover{border-color:rgba(0,51,160,.2)}
+  .input,select{
+    width:100%; padding:10px 12px; 
+    border:1px solid var(--border); 
+    background:#fff; font:inherit; font-size:15px;
+  }
   .input:focus,select:focus{
     outline:none; border-color:var(--rs-blue); 
-    box-shadow:0 0 0 3px rgba(0,51,160,.1);
   }
   
-  /* Range слайдер */
-  input[type="range"]{
-    -webkit-appearance:none; appearance:none;
-    background:transparent; cursor:pointer;
-  }
-  input[type="range"]::-webkit-slider-track{
-    background:var(--border); height:6px; border-radius:3px;
-  }
-  input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance:none; appearance:none;
-    width:20px; height:20px; border-radius:50%;
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-blue-600));
-    box-shadow:0 2px 8px rgba(0,51,160,.3);
-    margin-top:-7px; transition:.2s;
-  }
-  input[type="range"]:hover::-webkit-slider-thumb{
-    transform:scale(1.2); box-shadow:0 4px 12px rgba(0,51,160,.4);
-  }
-  
-  .range-value{
-    display:inline-block; padding:4px 8px; border-radius:6px;
-    background:rgba(0,51,160,.08); color:var(--rs-blue);
-    font-weight:700; font-size:14px; margin-left:8px;
-  }
-  
-  /* Результаты калькулятора */
-  .calcout{display:grid; gap:12px}
-  .kpi{
+  /* Результаты */
+  .results{background:var(--bg-gray); padding:30px; margin-top:20px;}
+  .result-item{
     display:flex; justify-content:space-between; align-items:center; 
-    padding:16px 18px; border:1px solid var(--border); 
-    border-radius:12px; background:linear-gradient(180deg,#fff,#f7fbff);
-    transition:all .3s;
+    padding:15px 0; border-bottom:1px solid var(--border);
   }
-  .kpi:hover{transform:translateX(4px); box-shadow:0 4px 12px rgba(0,51,160,.08)}
-  .kpi strong{font-size:22px; color:var(--rs-blue-600)}
-  .kpi.highlight{
-    background:linear-gradient(135deg,rgba(0,51,160,.04),rgba(0,174,239,.04));
-    border-color:rgba(0,51,160,.2);
+  .result-item:last-child{border-bottom:none;}
+  .result-label{color:var(--muted);}
+  .result-value{font-size:18px; font-weight:700; color:var(--rs-blue);}
+  .result-item.total{
+    font-size:20px; margin-top:10px; padding-top:20px;
+    border-top:2px solid var(--rs-blue);
   }
 
-  /* ===== Процесс с таймлайном ===== */
-  .timeline{position:relative; padding-left:40px}
-  .timeline::before{
-    content:''; position:absolute; left:15px; top:0; bottom:0; width:2px;
-    background:linear-gradient(180deg,var(--rs-blue),var(--rs-accent),var(--rs-green));
+  /* ===== Процесс ===== */
+  .process{background:var(--bg-gray); padding:60px 0; margin:60px 0;}
+  .process-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:30px;
+    max-width:var(--maxw); margin:0 auto; padding:0 15px;
   }
-  .timeline-item{
-    position:relative; padding-bottom:32px; opacity:0; 
-    transform:translateX(-20px); transition:all .6s var(--ease-out);
+  .process-item{text-align:center;}
+  .process-number{
+    width:50px; height:50px; margin:0 auto 20px;
+    background:var(--rs-blue); color:#fff;
+    display:grid; place-items:center;
+    font-size:20px; font-weight:700;
   }
-  .timeline-item._in{opacity:1; transform:translateX(0)}
-  .timeline-item:last-child{padding-bottom:0}
-  
-  .timeline-dot{
-    position:absolute; left:-25px; top:8px;
-    width:16px; height:16px; border-radius:50%;
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-accent));
-    border:3px solid #fff; box-shadow:0 0 0 4px rgba(0,51,160,.1);
-    z-index:1; transition:all .3s;
-  }
-  .timeline-item:hover .timeline-dot{
-    transform:scale(1.3); box-shadow:0 0 0 6px rgba(0,51,160,.15);
-  }
-  
-  .timeline-content{
-    background:#fff; border:1px solid var(--border); 
-    border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
-    transition:all .3s;
-  }
-  .timeline-content:hover{box-shadow:var(--shadow-hover)}
-  .timeline-title{font-weight:800; color:var(--rs-blue); margin-bottom:6px}
-  .timeline-desc{color:#243042; opacity:.9}
+  .process-title{font-weight:700; margin-bottom:10px;}
+  .process-desc{font-size:14px; color:var(--muted);}
 
-  /* ===== FAQ с анимацией ===== */
-  details{
-    border:1px solid var(--border); border-radius:12px; 
-    background:#fff; box-shadow:var(--shadow); 
-    margin-bottom:12px; transition:all .3s;
+  /* ===== FAQ ===== */
+  .faq-item{
+    background:#fff; border:1px solid var(--border);
+    margin-bottom:10px;
   }
-  details:hover{box-shadow:var(--shadow-hover)}
-  summary{
-    cursor:pointer; list-style:none; padding:16px 20px; 
-    font-weight:800; display:flex; justify-content:space-between;
-    align-items:center; transition:.3s;
+  .faq-question{
+    padding:20px; cursor:pointer; 
+    font-weight:500; display:flex; 
+    justify-content:space-between; align-items:center;
+    transition:.2s;
   }
-  summary::after{
-    content:'+'; font-size:20px; color:var(--rs-blue);
-    transition:.3s transform;
+  .faq-question:hover{background:var(--bg-gray);}
+  .faq-icon{
+    font-size:20px; color:var(--rs-blue);
+    transition:.2s transform;
   }
-  details[open] summary::after{transform:rotate(45deg)}
-  details[open] summary{border-bottom:1px solid var(--border)}
-  details .ans{padding:16px 20px; color:#263345; line-height:1.6}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-answer{
+    padding:0 20px 20px; display:none;
+    color:var(--muted); line-height:1.6;
+  }
+  .faq-item.open .faq-answer{display:block;}
 
   /* ===== Форма ===== */
-  form{display:grid; gap:16px}
-  .formgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
-  textarea.input{min-height:120px; resize:vertical}
-  .consent{
-    display:flex; gap:12px; align-items:flex-start; 
-    color:#3a4657; font-size:14px; line-height:1.4;
+  .form-section{background:var(--bg-gray); padding:60px 0;}
+  .form-container{
+    max-width:600px; margin:0 auto; 
+    background:#fff; padding:40px; border:1px solid var(--border);
   }
-  .checkbox{
-    width:20px; height:20px; border-radius:4px; 
-    border:2px solid var(--border); background:#fff;
-    appearance:none; cursor:pointer; transition:.3s;
-    flex:0 0 20px; margin-top:1px;
+  form{display:grid; gap:20px;}
+  .form-group{display:grid; gap:8px;}
+  .form-group label{font-weight:500;}
+  .required{color:var(--bad);}
+  textarea.input{min-height:100px; resize:vertical;}
+  .checkbox-group{
+    display:flex; gap:10px; align-items:flex-start;
+    font-size:14px; color:var(--muted);
   }
-  .checkbox:checked{
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-blue-600));
-    border-color:var(--rs-blue);
-  }
-  .checkbox:checked::after{
-    content:'✓'; color:#fff; display:block; text-align:center;
-    line-height:16px; font-weight:700;
-  }
+  .checkbox{width:20px; height:20px; flex:0 0 20px;}
 
   /* ===== Футер ===== */
   footer{
-    padding:40px 20px 60px; border-top:1px solid var(--border); 
-    background:linear-gradient(180deg,#ffffffcc,#f8fafc);
-    backdrop-filter:saturate(160%) blur(6px);
+    background:var(--rs-blue); color:#fff; 
+    padding:30px 0; margin-top:80px;
   }
-  .foot{max-width:var(--maxw); margin:0 auto; display:grid; gap:24px}
-  .foot-grid{
-    display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px;
-    padding-bottom:24px; border-bottom:1px solid var(--border);
+  .foot{
+    max-width:var(--maxw); margin:0 auto; padding:0 15px;
+    display:flex; justify-content:space-between; align-items:center;
   }
-  .foot-col h4{font-weight:800; color:var(--rs-blue); margin:0 0 12px}
-  .foot-col a{
-    display:block; padding:4px 0; color:#465367; 
-    transition:.2s; position:relative;
-  }
-  .foot-col a:hover{color:var(--rs-blue); transform:translateX(4px)}
-  .foot-bottom{
-    display:flex; justify-content:space-between; align-items:center; 
-    gap:16px; flex-wrap:wrap; color:var(--muted); font-size:14px;
-  }
-  .social{display:flex; gap:12px}
-  .social a{
-    width:36px; height:36px; border-radius:50%; 
-    background:rgba(0,51,160,.08); color:var(--rs-blue);
-    display:grid; place-items:center; transition:.3s;
-  }
-  .social a:hover{
-    background:linear-gradient(135deg,var(--rs-blue),var(--rs-blue-600));
-    color:#fff; transform:translateY(-2px);
-  }
-
-  /* ===== Мобильная панель ===== */
-  .mbar{
-    display:none; position:fixed; left:0; right:0; bottom:0; z-index:1001;
-    background:linear-gradient(180deg, #ffffffee, #ffffff); 
-    border-top:1px solid var(--border);
-    padding:10px 16px; display:flex; justify-content:space-around; gap:8px;
-    box-shadow:0 -4px 20px rgba(0,0,0,.08);
-  }
-  .mbar a{
-    flex:1; text-align:center; padding:10px 8px; 
-    border-radius:12px; font-weight:700; font-size:14px;
-    display:flex; flex-direction:column; align-items:center; gap:4px;
-    transition:.3s;
-  }
-  .mbar a:hover{background:rgba(0,51,160,.04)}
-  .mbar a.active{color:var(--rs-blue)}
-  .mbar .icon{font-size:20px}
-
-  /* Плавающая кнопка */
-  .floating-cta{
-    position:fixed; right:20px; bottom:90px; z-index:1001;
-    box-shadow:0 20px 40px rgba(0,51,160,.35);
-    padding:14px 24px;
-  }
-
-  /* ===== Всплывающие подсказки ===== */
-  .tooltip{
-    position:relative; cursor:help;
-    border-bottom:1px dashed var(--muted);
-  }
-  .tooltip::after{
-    content:attr(data-tooltip); position:absolute; bottom:100%; left:50%;
-    transform:translateX(-50%) translateY(-8px); opacity:0;
-    background:#243042; color:#fff; padding:8px 12px; border-radius:8px;
-    font-size:13px; white-space:nowrap; pointer-events:none;
-    transition:.3s; z-index:10;
-  }
-  .tooltip:hover::after{opacity:1; transform:translateX(-50%) translateY(-12px)}
-
-  /* ===== Индикатор загрузки ===== */
-  .spinner{
-    display:inline-block; width:20px; height:20px;
-    border:2px solid var(--border); border-radius:50%;
-    border-top-color:var(--rs-blue); animation:spin .6s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  /* ===== Галерея ===== */
-  .gallery{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
-    margin:24px 0;
-  }
-  .gallery-item{
-    border-radius:12px; overflow:hidden; cursor:pointer;
-    transition:.3s; position:relative; aspect-ratio:4/3;
-  }
-  .gallery-item img{width:100%; height:100%; object-fit:cover}
-  .gallery-item:hover{transform:scale(1.05); box-shadow:var(--shadow-hover)}
-  .gallery-item::after{
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6));
-    opacity:0; transition:.3s;
-  }
-  .gallery-item:hover::after{opacity:1}
+  .foot .logo{color:#fff;}
+  .foot small{opacity:.8;}
 
   /* ===== Мобильная адаптация ===== */
   @media (max-width:980px){
-    .hero .wrap{grid-template-columns:1fr; gap:32px}
-    .illus{order:-1; width:min(400px,90%)}
-    .hero-cards{grid-template-columns:1fr}
+    .hero-stats{grid-template-columns:1fr}
     .grid.cols-3{grid-template-columns:1fr 1fr}
     .calc{grid-template-columns:1fr}
-    .foot-grid{grid-template-columns:1fr 1fr; gap:24px}
-    .timeline{padding-left:32px}
-    .gallery{grid-template-columns:repeat(2,1fr)}
+    .process-grid{grid-template-columns:1fr; gap:40px}
+    .process-item{
+      display:grid; grid-template-columns:50px 1fr; gap:20px;
+      text-align:left;
+    }
   }
   
   @media (max-width:640px){
@@ -632,50 +404,38 @@
     .menu-toggle{display:block}
     .navlinks{
       position:fixed; top:0; left:-100%; width:100%; height:100vh;
-      background:rgba(255,255,255,.98); backdrop-filter:blur(10px);
-      flex-direction:column; justify-content:center; gap:24px;
-      padding:40px; transition:.4s left var(--ease-in-out);
-      z-index:1050;
+      background:#fff; flex-direction:column; 
+      justify-content:flex-start; gap:0;
+      padding:70px 0 0; transition:.3s left;
+      z-index:999;
     }
     .navlinks.active{left:0}
-    .navlinks a{font-size:24px; font-weight:700}
+    .navlinks a{
+      padding:15px 30px; border-bottom:1px solid var(--border);
+      width:100%;
+    }
+    .desktop-actions{display:none}
     
     /* Контент */
-    section{padding:40px 16px}
-    h1{font-size:clamp(28px,7vw,40px)}
-    h2{font-size:clamp(24px,6vw,32px)}
-    .hero-cards{grid-template-columns:1fr; gap:12px}
+    section{padding:40px 15px}
+    h1{font-size:28px}
+    h2{font-size:24px}
+    .lead{font-size:16px}
+    .hero-stats{gap:15px}
     .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
-    .formgrid{grid-template-columns:1fr}
-    .tabs{padding:4px; gap:4px}
-    .tab{padding:10px 16px; font-size:14px}
-    .foot-grid{grid-template-columns:1fr}
-    .foot-bottom{flex-direction:column; text-align:center}
-    .mbar{display:flex}
-    .floating-cta{display:none}
-    .gallery{grid-template-columns:1fr}
-    
-    /* Упрощение элементов */
-    .chip{display:none}
-    .solar-panel{width:160px; height:110px}
-    .timeline{padding-left:24px}
-    .timeline::before{left:10px}
-    .timeline-dot{left:-18px; width:12px; height:12px}
+    .tabs{flex-wrap:wrap}
+    .tab{font-size:14px; padding:10px 16px}
+    .process-number{width:40px; height:40px; font-size:16px}
   }
 
-  /* ===== Принт ===== */
+  /* ===== Печать ===== */
   @media print{
-    header,.navlinks,.mbar,.ghost,.floating-cta,.illus,.wave,.controls-only,
-    .menu-toggle,.float-el,.social{display:none !important}
+    header,.menu-toggle,.navlinks,.controls-only{display:none !important}
     body{background:#fff}
-    section{padding:24px 0}
-    .card{box-shadow:none; border-color:#dfe7f3}
+    section{padding:20px 0}
+    .card{box-shadow:none; border:1px solid #ccc}
     h1,h2,.price{-webkit-text-fill-color:var(--rs-blue) !important}
-  }
-
-  /* ===== Темная тема (опционально) ===== */
-  @media (prefers-color-scheme:dark){
-    /* Можно добавить поддержку темной темы */
+    .btn{display:none}
   }
 </style>
 </head>
@@ -687,10 +447,13 @@
 <header>
   <nav class="nav">
     <div class="logo">
-      <div class="mark" aria-hidden="true"></div>
-      <div>
-        <div style="line-height:1">АО «Россети Кубань»</div>
-        <small style="font-weight:700; color:#243042; opacity:.7">Нетарифные услуги</small>
+      <svg class="logo-img" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="40" fill="#004B87"/>
+        <text x="50" y="25" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">РОССЕТИ</text>
+      </svg>
+      <div class="logo-text">
+        <div class="company">АО «Россети Кубань»</div>
+        <div class="dept">Солнечная микрогенерация</div>
       </div>
     </div>
     
@@ -701,158 +464,102 @@
     <div class="navlinks" id="navLinks">
       <a href="#packs">Комплекты</a>
       <a href="#calc">Калькулятор</a>
-      <a href="#process">Процесс</a>
-      <a href="#gallery">Примеры</a>
-      <a href="#faq">FAQ</a>
-      <a href="#lead" class="cta">Оставить заявку</a>
+      <a href="#process">Процесс работы</a>
+      <a href="#faq">Вопросы</a>
     </div>
     
-    <div style="display:flex; gap:8px" class="desktop-actions">
-      <button class="ghost" id="btnPrint" type="button">📄 Печать</button>
-      <a class="cta" href="#lead">Заявка</a>
+    <div class="desktop-actions">
+      <a class="btn btn-primary" href="#lead">Оставить заявку</a>
     </div>
   </nav>
 </header>
 
 <!-- ===== Hero ===== -->
 <div class="hero">
-  <div class="float-el"></div>
-  <div class="float-el"></div>
-  
   <div class="wrap">
-    <div>
-      <span class="eyebrow">☀️ Солнечная микрогенерация • Комплекты под ключ</span>
-      <h1>Сетевые, гибридные и СБП-решения от <span style="color:var(--rs-accent)">Россети</span></h1>
-      <p class="lead">Полный цикл услуг: проектирование, оборудование Хевел, техприсоединение, монтаж и ввод в эксплуатацию. Официальная гарантия, профессиональный сервис.</p>
-      
-      <div class="hero-cards">
-        <div class="stat">
-          <div class="icon">⚡</div>
-          <div>
-            <div class="label">Сетевые комплекты</div>
-            <strong>от 226 090 ₽</strong>
-          </div>
-        </div>
-        <div class="stat">
-          <div class="icon">🔋</div>
-          <div>
-            <div class="label">Гибридные комплекты</div>
-            <strong>от 430 290 ₽</strong>
-          </div>
-        </div>
-        <div class="stat">
-          <div class="icon">🏠</div>
-          <div>
-            <div class="label">СБП-системы</div>
-            <strong>от 308 690 ₽</strong>
-          </div>
-        </div>
+    <nav class="breadcrumb">
+      <a href="#">Главная</a> / <a href="#">Услуги</a> / Солнечная микрогенерация
+    </nav>
+    
+    <h1>Установка солнечных электростанций</h1>
+    <p class="lead">
+      Комплексное решение для частных домохозяйств и предприятий. 
+      Проектирование, поставка оборудования, монтаж и подключение к сети 
+      от официальной сетевой компании региона.
+    </p>
+    
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="number">от 226 090 ₽</div>
+        <div class="label">Сетевые станции</div>
       </div>
-      
-      <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap">
-        <a class="cta" href="#packs">🔍 Смотреть комплекты</a>
-        <a class="ghost" href="#calc">💰 Рассчитать проект</a>
+      <div class="stat-card">
+        <div class="number">от 430 290 ₽</div>
+        <div class="label">Гибридные станции</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">от 308 690 ₽</div>
+        <div class="label">Системы БП</div>
       </div>
     </div>
     
-    <div class="illus">
-      <div class="solar-panel">
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-        <div class="solar-cell"></div>
-      </div>
-      <div class="chip"><span class="emoji">📐</span>Проектирование</div>
-      <div class="chip"><span class="emoji">📦</span>Поставка</div>
-      <div class="chip"><span class="emoji">🔧</span>Монтаж</div>
-      <div class="chip"><span class="emoji">✅</span>Ввод в эксплуатацию</div>
+    <div style="margin-top:30px">
+      <a class="btn btn-primary" href="#calc">Рассчитать стоимость</a>
+      <a class="btn btn-secondary" href="#packs" style="margin-left:15px">Смотреть комплекты</a>
     </div>
   </div>
-
-  <!-- Волна -->
-  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="url(#wave-gradient)"/>
-    <defs>
-      <linearGradient id="wave-gradient" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stop-color="#e9f3ff"/>
-        <stop offset="50%" stop-color="#f0f9e8"/>
-        <stop offset="100%" stop-color="#ffffff"/>
-      </linearGradient>
-    </defs>
-  </svg>
 </div>
 
 <!-- ===== Преимущества ===== -->
 <section>
-  <h2>Почему выбирают Россети</h2>
-  <p class="sub">Мы не просто сетевая компания — мы ваш технологический партнёр в энергетике будущего</p>
+  <h2>Преимущества работы с сетевой компанией</h2>
+  <p class="section-desc">
+    Гарантированное подключение к сети и профессиональная реализация проекта
+  </p>
   
   <div class="grid cols-3">
     <div class="card benefit">
-      <div class="icon">🎯</div>
-      <div>
-        <h3>Единое окно</h3>
-        <p>Один договор на всё: от проекта до ввода в эксплуатацию. Никакой бюрократии.</p>
-      </div>
-    </div>
-    <div class="card benefit">
       <div class="icon">⚡</div>
-      <div>
-        <h3>Гарантия подключения</h3>
-        <p>Мы владеем сетями — гарантируем техприсоединение и корректный учёт электроэнергии.</p>
-      </div>
+      <h3>Единое окно</h3>
+      <p>Один договор на весь комплекс работ: от проектирования до ввода в эксплуатацию</p>
     </div>
     <div class="card benefit">
-      <div class="icon">🛡️</div>
-      <div>
-        <h3>Официальная гарантия</h3>
-        <p>5 лет на оборудование, 2 года на монтаж. Сервисное обслуживание от производителя.</p>
-      </div>
+      <div class="icon">✓</div>
+      <h3>Гарантия подключения</h3>
+      <p>Как владельцы сетей, гарантируем техприсоединение и правильный учёт электроэнергии</p>
+    </div>
+    <div class="card benefit">
+      <div class="icon">🛡</div>
+      <h3>Официальная гарантия</h3>
+      <p>5 лет на оборудование, 2 года на монтажные работы. Сервисное обслуживание</p>
     </div>
     <div class="card benefit">
       <div class="icon">📊</div>
-      <div>
-        <h3>Прозрачный учёт</h3>
-        <p>Двунаправленные счётчики, личный кабинет, автоматическая передача данных в сбыт.</p>
-      </div>
+      <h3>Прозрачный учёт</h3>
+      <p>Двунаправленные счётчики, личный кабинет, автоматическая передача данных</p>
     </div>
     <div class="card benefit">
-      <div class="icon">🚀</div>
-      <div>
-        <h3>Быстрая реализация</h3>
-        <p>От заявки до запуска — 45 дней. Четкие сроки на каждом этапе работ.</p>
-      </div>
+      <div class="icon">⏱</div>
+      <h3>Быстрая реализация</h3>
+      <p>От заявки до запуска — 45 дней. Четкие сроки на каждом этапе работ</p>
     </div>
     <div class="card benefit">
-      <div class="icon">🌱</div>
-      <div>
-        <h3>Зелёная энергия</h3>
-        <p>Снижайте углеродный след, получайте зелёные сертификаты, продавайте излишки в сеть.</p>
-      </div>
+      <div class="icon">♻</div>
+      <h3>Зелёная энергия</h3>
+      <p>Снижение углеродного следа, продажа излишков электроэнергии в сеть</p>
     </div>
   </div>
 </section>
 
 <!-- ===== Комплекты ===== -->
 <section id="packs">
-  <h2>Готовые комплектные решения</h2>
-  <p class="sub">Проверенное оборудование от российского производителя Хевел. Цены указаны без учёта монтажа.</p>
+  <h2>Готовые решения</h2>
+  <p class="section-desc">Проверенное оборудование от российского производителя Хевел</p>
 
   <div class="tabs">
-    <button class="tab active" data-tab="setev">⚡ Сетевые СЭС</button>
-    <button class="tab" data-tab="gibrid">🔋 Гибридные СЭС</button>
-    <button class="tab" data-tab="sbp">🏠 Системы БП</button>
+    <button class="tab active" data-tab="setev">Сетевые СЭС</button>
+    <button class="tab" data-tab="gibrid">Гибридные СЭС</button>
+    <button class="tab" data-tab="sbp">Системы БП</button>
   </div>
 
   <div class="grid cols-3" id="cards">
@@ -862,280 +569,254 @@
 
 <!-- ===== Калькулятор ===== -->
 <section id="calc">
-  <h2>Калькулятор солнечной электростанции</h2>
-  <p class="sub">Рассчитайте стоимость проекта «под ключ» и срок окупаемости для вашего объекта</p>
+  <div class="card">
+    <h2>Калькулятор стоимости</h2>
+    <p class="section-desc">Рассчитайте стоимость проекта и срок окупаемости</p>
 
-  <div class="calc card">
-    <div class="controls-only">
-      <div class="field">
-        <label for="cat">🏷️ Тип системы</label>
-        <select id="cat" class="input">
-          <option value="setev">Сетевая СЭС (продажа в сеть)</option>
-          <option value="gibrid">Гибридная СЭС (с накопителем)</option>
-          <option value="sbp">Система БП (резервное питание)</option>
-        </select>
+    <div class="calc">
+      <div class="controls-only">
+        <div class="field">
+          <label for="cat">Тип системы</label>
+          <select id="cat" class="input">
+            <option value="setev">Сетевая СЭС</option>
+            <option value="gibrid">Гибридная СЭС</option>
+            <option value="sbp">Система БП</option>
+          </select>
+        </div>
+        
+        <div class="field">
+          <label for="option">Комплектация</label>
+          <select id="option" class="input"></select>
+        </div>
+        
+        <div class="field">
+          <label>
+            <input type="checkbox" id="add_proj" class="checkbox" checked>
+            Включить проектирование и техприсоединение
+          </label>
+          <input id="proj_cost" class="input" type="number" step="1000" value="45000" style="margin-top:10px">
+        </div>
+        
+        <div class="field">
+          <label for="mont_perc">Стоимость монтажа, % от оборудования</label>
+          <input id="mont_perc" class="input" type="number" min="10" max="25" step="1" value="15">
+        </div>
+        
+        <div class="field">
+          <label for="dist">Расстояние до точки подключения, м</label>
+          <input id="dist" class="input" type="number" min="0" max="100" step="5" value="15">
+        </div>
+        
+        <div class="field">
+          <label for="tariff">Текущий тариф на электроэнергию, ₽/кВт·ч</label>
+          <input id="tariff" class="input" type="number" step="0.1" value="6.0">
+        </div>
+        
+        <div class="field">
+          <label for="specgen">Среднегодовая инсоляция</label>
+          <select id="specgen" class="input">
+            <option value="1100">Северные регионы (1100 кВт·ч/кВт·год)</option>
+            <option value="1300" selected>Краснодарский край (1300 кВт·ч/кВт·год)</option>
+            <option value="1400">Южные регионы (1400 кВт·ч/кВт·год)</option>
+          </select>
+        </div>
       </div>
-      
-      <div class="field">
-        <label for="option">⚡ Комплектация</label>
-        <select id="option" class="input"></select>
-      </div>
-      
-      <div class="field">
-        <label>
-          <input type="checkbox" id="add_proj" class="checkbox" checked>
-          📐 Проект и техприсоединение
-          <span class="tooltip" data-tooltip="Включает проектирование, согласования, выпуск ТУ">ℹ️</span>
-        </label>
-        <input id="proj_cost" class="input" type="number" step="1000" value="45000" placeholder="Стоимость проекта">
-      </div>
-      
-      <div class="field">
-        <label for="mont_perc">🔧 Монтаж и материалы 
-          <span class="range-value" id="mont_val">15%</span>
-        </label>
-        <input id="mont_perc" type="range" min="10" max="25" step="1" value="15">
-      </div>
-      
-      <div class="field">
-        <label for="dist">📏 Расстояние до точки подключения
-          <span class="range-value" id="dist_val">15 м</span>
-        </label>
-        <input id="dist" type="range" min="0" max="100" step="5" value="15">
-      </div>
-      
-      <div class="field">
-        <label for="tariff">💰 Ваш тариф, ₽/кВт·ч</label>
-        <input id="tariff" class="input" type="number" step="0.1" value="6.0" placeholder="Тариф на электроэнергию">
-      </div>
-      
-      <div class="field">
-        <label for="specgen">☀️ Солнечная активность
-          <span class="tooltip" data-tooltip="Среднегодовая выработка на 1 кВт мощности в вашем регионе">ℹ️</span>
-        </label>
-        <select id="specgen" class="input">
-          <option value="1100">Северные регионы (1100 кВт·ч/кВт·год)</option>
-          <option value="1300" selected>Краснодарский край (1300 кВт·ч/кВт·год)</option>
-          <option value="1400">Южные регионы (1400 кВт·ч/кВт·год)</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="calcout">
-      <div class="kpi"><div>📦 Оборудование</div><strong id="equip">— ₽</strong></div>
-      <div class="kpi"><div>📐 Проект и ТП</div><strong id="proj">— ₽</strong></div>
-      <div class="kpi"><div>🔧 Монтаж</div><strong id="mont">— ₽</strong></div>
-      <div class="kpi highlight"><div>💵 Итого под ключ</div><strong id="sum">— ₽</strong></div>
-      <div class="kpi"><div>⚡ Годовая выработка</div><strong id="gen">— кВт·ч</strong></div>
-      <div class="kpi"><div>💰 Экономия в год</div><strong id="save">— ₽/год</strong></div>
-      <div class="kpi highlight"><div>⏱️ Окупаемость</div><strong id="pp">— лет</strong></div>
-      
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px">
-        <a class="cta" href="#lead">📞 Получить точный расчёт</a>
-        <button class="ghost" type="button" onclick="window.print()">🖨️ Распечатать</button>
+      <div>
+        <div class="results">
+          <div class="result-item">
+            <span class="result-label">Стоимость оборудования</span>
+            <span class="result-value" id="equip">— ₽</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Проектирование и ТП</span>
+            <span class="result-value" id="proj">— ₽</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Монтажные работы</span>
+            <span class="result-value" id="mont">— ₽</span>
+          </div>
+          <div class="result-item total">
+            <span class="result-label"><strong>Итого под ключ</strong></span>
+            <span class="result-value" id="sum">— ₽</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Годовая выработка</span>
+            <span class="result-value" id="gen">— кВт·ч</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Экономия в год</span>
+            <span class="result-value" id="save">— ₽</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Срок окупаемости</span>
+            <span class="result-value" id="pp">— лет</span>
+          </div>
+        </div>
+        
+        <div style="margin-top:20px">
+          <a class="btn btn-primary" href="#lead">Получить точный расчёт</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== Процесс ===== -->
-<section id="process">
-  <h2>Как мы работаем</h2>
-  <p class="sub">Прозрачный процесс с контролем на каждом этапе. Средний срок реализации — 45 дней.</p>
-  
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">📋 Заявка и консультация</div>
-        <div class="timeline-desc">Заполните форму или позвоните. Инженер проконсультирует по мощности и комплектации для вашего объекта.</div>
-      </div>
-    </div>
+<div class="process" id="process">
+  <div style="max-width:var(--maxw); margin:0 auto; padding:0 15px;">
+    <h2>Процесс реализации проекта</h2>
+    <p class="section-desc">От заявки до запуска — 45 дней</p>
     
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">📐 Проектирование</div>
-        <div class="timeline-desc">Выезд на объект, проект электроснабжения, согласование в Россети, выпуск технических условий.</div>
+    <div class="process-grid">
+      <div class="process-item">
+        <div class="process-number">1</div>
+        <div class="process-title">Заявка</div>
+        <div class="process-desc">Консультация и предварительный расчёт</div>
       </div>
-    </div>
-    
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">📦 Поставка оборудования</div>
-        <div class="timeline-desc">Комплектация: солнечные панели Хевел, инверторы, АКБ (для гибридных), крепления, кабели, защитная автоматика.</div>
+      <div class="process-item">
+        <div class="process-number">2</div>
+        <div class="process-title">Проект</div>
+        <div class="process-desc">Выезд на объект, проектирование, ТУ</div>
       </div>
-    </div>
-    
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">🔧 Монтаж и подключение</div>
-        <div class="timeline-desc">Установка панелей, сборка щита управления, прокладка кабелей, установка двунаправленного счётчика.</div>
+      <div class="process-item">
+        <div class="process-number">3</div>
+        <div class="process-title">Поставка</div>
+        <div class="process-desc">Комплектация и доставка оборудования</div>
       </div>
-    </div>
-    
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">✅ Ввод в эксплуатацию</div>
-        <div class="timeline-desc">Пусконаладка, проверка работы, подключение к личному кабинету, настройка передачи данных в энергосбыт.</div>
+      <div class="process-item">
+        <div class="process-number">4</div>
+        <div class="process-title">Монтаж</div>
+        <div class="process-desc">Установка и подключение системы</div>
       </div>
-    </div>
-    
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">🛡️ Гарантия и сервис</div>
-        <div class="timeline-desc">Гарантийное обслуживание, удалённый мониторинг, консультации по продаже излишков электроэнергии.</div>
+      <div class="process-item">
+        <div class="process-number">5</div>
+        <div class="process-title">Запуск</div>
+        <div class="process-desc">Ввод в эксплуатацию, настройка учёта</div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ===== Галерея ===== -->
-<section id="gallery">
-  <h2>Примеры реализованных проектов</h2>
-  <p class="sub">Более 500 объектов по Краснодарскому краю: частные дома, фермы, предприятия</p>
-  
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%23e8f4fd'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%230033A0' font-family='sans-serif' font-size='18' font-weight='bold'%3EЧастный дом 10 кВт%3C/text%3E%3C/svg%3E" alt="Частный дом">
-    </div>
-    <div class="gallery-item">
-      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%23f0f9e8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%230033A0' font-family='sans-serif' font-size='18' font-weight='bold'%3EФермерское хозяйство 25 кВт%3C/text%3E%3C/svg%3E" alt="Ферма">
-    </div>
-    <div class="gallery-item">
-      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%23fff4e6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%230033A0' font-family='sans-serif' font-size='18' font-weight='bold'%3EТорговый центр 50 кВт%3C/text%3E%3C/svg%3E" alt="ТЦ">
-    </div>
-    <div class="gallery-item">
-      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%23f3e8ff'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%230033A0' font-family='sans-serif' font-size='18' font-weight='bold'%3EПроизводство 100 кВт%3C/text%3E%3C/svg%3E" alt="Производство">
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- ===== FAQ ===== -->
 <section id="faq">
-  <h2>Частые вопросы</h2>
-  <div class="grid cols-2">
-    <details open>
-      <summary>Нужно ли разрешение на установку солнечных панелей?</summary>
-      <div class="ans">Для микрогенерации до 15 кВт разрешения не требуется. Мы берём на себя все согласования с сетевой компанией и выпуск технических условий. Вам нужно только подписать документы.</div>
-    </details>
+  <h2>Часто задаваемые вопросы</h2>
+  
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-question">
+        Нужно ли разрешение на установку солнечных панелей?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        Для объектов микрогенерации мощностью до 15 кВт специального разрешения не требуется. 
+        Необходимо только техническое присоединение к электросетям, которое мы полностью берём на себя.
+      </div>
+    </div>
     
-    <details>
-      <summary>Можно ли продавать электроэнергию в сеть?</summary>
-      <div class="ans">Да, по закону о микрогенерации излишки выкупаются гарантирующим поставщиком по средневзвешенной цене оптового рынка. Мы настроим двунаправленный учёт и подключим к системе продаж.</div>
-    </details>
+    <div class="faq-item">
+      <div class="faq-question">
+        Можно ли продавать излишки электроэнергии?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        Да, согласно закону о микрогенерации, излишки электроэнергии выкупаются 
+        гарантирующим поставщиком по установленным тарифам. Мы настроим систему 
+        учёта для автоматической продажи излишков.
+      </div>
+    </div>
     
-    <details>
-      <summary>Какая гарантия на оборудование?</summary>
-      <div class="ans">На солнечные панели Хевел — 5 лет официальной гарантии + 25 лет на сохранение 80% мощности. На инверторы — 5 лет. На АКБ — 3-5 лет в зависимости от типа. На монтаж — 2 года.</div>
-    </details>
+    <div class="faq-item">
+      <div class="faq-question">
+        Какая гарантия предоставляется?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        На солнечные модули — 5 лет официальной гарантии и 25 лет на сохранение 
+        80% мощности. На инверторы — 5 лет. На монтажные работы — 2 года.
+      </div>
+    </div>
     
-    <details>
-      <summary>Работают ли панели зимой и в пасмурную погоду?</summary>
-      <div class="ans">Да, современные панели работают даже в облачную погоду, хотя и с меньшей эффективностью (20-50% от номинала). Зимой выработка снижается, но холод даже улучшает КПД панелей.</div>
-    </details>
-    
-    <details>
-      <summary>Нужно ли обслуживание?</summary>
-      <div class="ans">Минимальное: очистка от снега зимой и от пыли 1-2 раза в год. Мы предлагаем сервисные контракты с удалённым мониторингом и выездом специалистов.</div>
-    </details>
-    
-    <details>
-      <summary>Что входит в базовый монтаж?</summary>
-      <div class="ans">Установка опорных конструкций, монтаж панелей, прокладка DC/AC кабелей, сборка щита управления и защиты, установка и программирование инвертора, подключение заземления.</div>
-    </details>
-  </div>
-</section>
-
-<!-- ===== CTA-секция ===== -->
-<section style="background:linear-gradient(135deg,rgba(0,51,160,.04),rgba(0,174,239,.04)); border-radius:24px; margin:40px auto">
-  <div style="text-align:center">
-    <h2>Готовы перейти на солнечную энергию?</h2>
-    <p class="sub">Получите бесплатный расчёт для вашего объекта и узнайте точный срок окупаемости</p>
-    <a class="cta" href="#lead" style="font-size:18px; padding:16px 32px">
-      ☀️ Рассчитать мою экономию
-    </a>
+    <div class="faq-item">
+      <div class="faq-question">
+        Работают ли панели зимой?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        Да, солнечные панели работают круглый год. Зимой выработка снижается 
+        из-за короткого светового дня, но холод улучшает КПД панелей. 
+        Снег необходимо периодически очищать.
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===== Форма ===== -->
-<section id="lead">
-  <h2>Оставьте заявку на расчёт</h2>
-  <p class="sub">Наш инженер свяжется с вами в течение 2 часов в рабочее время</p>
-  
-  <div class="card">
+<div class="form-section" id="lead">
+  <div class="form-container">
+    <h2 style="text-align:left; margin-bottom:10px;">Оставить заявку</h2>
+    <p style="margin-bottom:30px;">Получите индивидуальный расчёт для вашего объекта</p>
+    
     <form id="leadForm">
-      <div class="formgrid">
-        <div class="field">
-          <label>👤 Ваше имя</label>
-          <input class="input" name="name" placeholder="Иван Иванов" required>
-        </div>
-        <div class="field">
-          <label>📱 Телефон</label>
-          <input class="input" name="phone" type="tel" placeholder="+7 (9XX) XXX-XX-XX" required>
-        </div>
+      <div class="form-group">
+        <label>Имя <span class="required">*</span></label>
+        <input class="input" name="name" required>
       </div>
       
-      <div class="formgrid">
-        <div class="field">
-          <label>📧 Email</label>
-          <input class="input" name="email" type="email" placeholder="ivan@example.com">
-        </div>
-        <div class="field">
-          <label>🏷️ Интересующий комплект</label>
-          <select class="input" name="pack">
-            <option>Выберите тип системы</option>
-            <option>Сетевая СЭС</option>
-            <option>Гибридная СЭС</option>
-            <option>Система БП</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <label>Телефон <span class="required">*</span></label>
+        <input class="input" name="phone" type="tel" required>
       </div>
       
-      <div class="field">
-        <label>📍 Адрес объекта</label>
-        <input class="input" name="address" placeholder="г. Краснодар, ул. Солнечная, д. 1">
+      <div class="form-group">
+        <label>Email</label>
+        <input class="input" name="email" type="email">
       </div>
       
-      <div class="field">
-        <label>💬 Комментарий</label>
-        <textarea class="input" name="comment" placeholder="Расскажите о вашем объекте: площадь крыши, среднемесячное потребление, особые требования..."></textarea>
+      <div class="form-group">
+        <label>Интересующий комплект</label>
+        <select class="input" name="pack">
+          <option>Не определился</option>
+          <option>Сетевая СЭС</option>
+          <option>Гибридная СЭС</option>
+          <option>Система БП</option>
+        </select>
       </div>
       
-      <label class="consent">
+      <div class="form-group">
+        <label>Адрес объекта</label>
+        <input class="input" name="address">
+      </div>
+      
+      <div class="form-group">
+        <label>Комментарий</label>
+        <textarea class="input" name="comment"></textarea>
+      </div>
+      
+      <div class="checkbox-group">
         <input type="checkbox" class="checkbox" required>
-        Согласен на обработку персональных данных в соответствии с <a href="#" style="color:var(--rs-blue)">политикой конфиденциальности</a>
-      </label>
-      
-      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center">
-        <button class="cta" type="submit">
-          <span class="spinner" style="display:none"></span>
-          📨 Отправить заявку
-        </button>
-        <button class="ghost" type="reset">Очистить форму</button>
-        <div id="formMsg" class="muted" style="margin-left:auto"></div>
+        <span>Согласен на обработку персональных данных</span>
       </div>
+      
+      <button class="btn btn-primary" type="submit" style="width:200px;">
+        Отправить заявку
+      </button>
+      
+      <div id="formMsg" style="margin-top:15px; font-size:14px;"></div>
     </form>
   </div>
-</section>
+</div>
 
 <!-- ===== Footer ===== -->
 <footer>
   <div class="foot">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
-      <div class="logo">
-        <div class="mark"></div>
-        <div>
-          <div>АО «Россети Кубань»</div>
-          <small style="opacity:.7">Солнечная микрогенерация</small>
-        </div>
+    <div class="logo">
+      <div class="logo-text">
+        <div class="company" style="color:#fff">АО «Россети Кубань»</div>
+        <div class="dept" style="color:rgba(255,255,255,0.8)">Солнечная микрогенерация</div>
       </div>
-      <small style="color:var(--muted)">© 2025 АО «Россети Кубань». Все права защищены. Не является публичной офертой.</small>
     </div>
+    <small>© 2025 АО «Россети Кубань». Все права защищены.</small>
   </div>
 </footer>
 
@@ -1163,14 +844,14 @@
 
 <script>
   // ====== Конфигурация ======
-  const EMAIL_ADDRESSES = ["abusalimov@gmail.com"];
+  const EMAIL_ADDRESSES = ["abusalimov@gmail.ru"];
   
   // EmailJS конфигурация (получите эти данные на https://www.emailjs.com/)
   const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // Замените на ваш Service ID
   const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // Замените на ваш Template ID
   
-  // Альтернатива: Google Apps Script endpoint (инструкция ниже)
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2D1kkxg6Vdv-1gESfwN9hqhBekC2uzSZp7bqrfIgCU7wZoQULiwjUuLWSqvfNX0w/exec"; // Вставьте URL вашего Google Apps Script
+  // Google Apps Script endpoint
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2D1kkxg6Vdv-1gESfwN9hqhBekC2uzSZp7bqrfIgCU7wZoQULiwjUuLWSqvfNX0w/exec";
 
   // ====== Прайс-листы (из PDF) ======
   const PRICES = {
@@ -1265,7 +946,7 @@
 
   // ====== Табы и карточки комплектов ======
   const cards = $('#cards');
-  const tabs = $$('.tab');
+  const tabs = $('.tab');
   let activeTab = 'setev';
 
   function renderCards() {
@@ -1276,73 +957,34 @@
     cards.innerHTML = items.map((r, i) => {
       const type = activeTab === 'setev' ? 'Сетевая СЭС' : 
                    activeTab === 'gibrid' ? 'Гибридная СЭС' : 'Система БП';
-      const icon = activeTab === 'setev' ? '⚡' : 
-                   activeTab === 'gibrid' ? '🔋' : '🏠';
       
       return `
         <div class="card pack">
-          ${r.popular ? '<div class="badge">🔥 Популярный выбор</div>' : `<div class="badge">${type}</div>`}
-          <div class="title">${icon} ${r.kw} кВт • ${r.phase}${r.akb ? ` • АКБ ${r.akb} кВт·ч` : ''}</div>
-          <div class="price">${money(r.price)} ₽</div>
-          <ul class="list">
-            <li>
-              <div class="check">✓</div>
-              <div>${activeTab !== 'sbp' ? 'Солнечные панели Хевел' : 'Инвертор и АКБ'}</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>${activeTab === 'setev' ? 'Сетевой инвертор' : 
-                      activeTab === 'gibrid' ? 'Гибридный инвертор' : 'Источник бесперебойного питания'}</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Кабели и защитная автоматика</div>
-            </li>
+          <div class="pack-header">
+            <div class="pack-type">${type}</div>
+            <div class="pack-title">${r.kw} кВт ${r.phase}${r.akb ? ` / ${r.akb} кВт·ч` : ''}</div>
+          </div>
+          <div class="price">${money(r.price)} <small>руб.</small></div>
+          <div class="features">
+            <li><div class="check">✓</div><div>${activeTab !== 'sbp' ? 'Солнечные модули Хевел' : 'Инверторное оборудование'}</div></li>
+            <li><div class="check">✓</div><div>${activeTab === 'setev' ? 'Сетевой инвертор' : activeTab === 'gibrid' ? 'Гибридный инвертор' : 'ИБП с функцией заряда'}</div></li>
+            <li><div class="check">✓</div><div>Кабели и автоматика</div></li>
             ${r.akb ? '<li><div class="check">✓</div><div>Литиевые аккумуляторы</div></li>' : ''}
-          </ul>
-          
-          <details ${i === 0 ? 'open' : ''}>
-            <summary>Все комплектации ${type}</summary>
-            <div class="ans">
-              <table style="width:100%; font-size:14px; margin-top:12px">
-                <thead>
-                  <tr style="border-bottom:1px solid var(--border)">
-                    <th style="padding:8px; text-align:left">Мощность</th>
-                    <th style="padding:8px; text-align:left">Фазность</th>
-                    ${activeTab !== 'setev' ? '<th style="padding:8px; text-align:left">АКБ</th>' : ''}
-                    <th style="padding:8px; text-align:right">Цена</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${PRICES[activeTab].map(x => `
-                    <tr style="border-bottom:1px solid var(--border)">
-                      <td style="padding:8px">${x.kw} кВт</td>
-                      <td style="padding:8px">${x.phase}</td>
-                      ${activeTab !== 'setev' ? `<td style="padding:8px">${x.akb} кВт·ч</td>` : ''}
-                      <td style="padding:8px; text-align:right; font-weight:700">${money(x.price)} ₽</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          </details>
-          
-          <div class="actions" style="margin-top:16px; display:flex; gap:12px">
-            <a class="cta" href="#calc" data-cat="${activeTab}" data-idx="${i}">
-              💰 Рассчитать проект
-            </a>
-            <a class="ghost" href="#lead">📞 Заказать</a>
           </div>
           
-          <div class="note" style="margin-top:12px; font-size:13px; color:var(--muted)">
-            * Цена без монтажа, опорных конструкций и автоматических выключателей
-          </div>
+          <a class="btn btn-primary" href="#calc" data-cat="${activeTab}" data-idx="${i}" style="width:100%">
+            Рассчитать проект
+          </a>
+          
+          <p style="font-size:12px; color:var(--muted); margin-top:15px; text-align:center">
+            * Без учета монтажа и опорных конструкций
+          </p>
         </div>
       `;
     }).join('');
     
     // Обработчики для кнопок
-    $$('a[data-cat]').forEach(btn => {
+    $('a[data-cat]').forEach(btn => {
       btn.addEventListener('click', () => {
         const cat = btn.getAttribute('data-cat');
         const idx = btn.getAttribute('data-idx');
@@ -1351,12 +993,6 @@
         if (idx !== null) $('#option').value = idx;
         estimate();
       });
-    });
-    
-    // Ре-анимация
-    $$('.card.pack').forEach(el => {
-      el.classList.remove('_in');
-      observer.observe(el);
     });
   }
 
@@ -1394,10 +1030,10 @@
   };
 
   // Обновление значений слайдеров
-  $('#mont_perc').addEventListener('input', e => {
+  $('#mont_perc')?.addEventListener('input', e => {
     $('#mont_val').textContent = e.target.value + '%';
   });
-  $('#dist').addEventListener('input', e => {
+  $('#dist')?.addEventListener('input', e => {
     $('#dist_val').textContent = e.target.value + ' м';
   });
 
@@ -1830,7 +1466,7 @@
   // ====== Финальная инициализация ======
   console.log('🌟 Сайт Россети Кубань - Солнечная микрогенерация');
   console.log('💡 Версия: 2.0.0');
-  console.log('📧 Email: Abusalimov@gmail.com');
+  console.log('📧 Email для заявок: abusalimov@gmail.ru');
 
 /* 
 ====== КОД ДЛЯ GOOGLE APPS SCRIPT (ВАРИАНТ 2) ======
@@ -1845,8 +1481,8 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     
-    // Email адреса получателей
-    const recipients = data.emails.join(',');
+    // Email адрес получателя
+    const recipients = 'abusalimov@gmail.ru';
     
     // Формирование письма
     const subject = data.subject || 'Новая заявка с сайта';
